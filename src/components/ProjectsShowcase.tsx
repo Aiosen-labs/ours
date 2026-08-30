@@ -131,18 +131,18 @@ export default function ProjectsShowcase() {
                         e.stopPropagation();
                         setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
                       }}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white z-20 focus:outline-none"
+                      className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 backdrop-blur-sm border border-black/10 flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity hover:bg-white z-20 focus:outline-none shadow-sm"
                     >
-                      <span className="material-symbols-outlined text-[20px]">arrow_back_ios_new</span>
+                      <span className="material-symbols-outlined text-[16px] sm:text-[20px]">arrow_back_ios_new</span>
                     </button>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
                       }}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white z-20 focus:outline-none"
+                      className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 backdrop-blur-sm border border-black/10 flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity hover:bg-white z-20 focus:outline-none shadow-sm"
                     >
-                      <span className="material-symbols-outlined text-[20px]">arrow_forward_ios</span>
+                      <span className="material-symbols-outlined text-[16px] sm:text-[20px]">arrow_forward_ios</span>
                     </button>
                     
                     {/* Dots indicator */}

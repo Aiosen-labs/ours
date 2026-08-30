@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { createPortal } from "react-dom";
 import { Project } from "@/data/projects";
 
 interface CaseStudyModalProps {
@@ -14,6 +15,11 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
   const modalRef = useRef<HTMLDivElement>(null);
   const previouslyFocusedElement = useRef<HTMLElement | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+  const [mounted, setMounted] = React.useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const images = project.images && project.images.length > 0 ? project.images : [project.imageUrl];
 
@@ -84,7 +90,9 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
     exit: { opacity: 0 }
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center sm:p-4 md:p-6 lg:p-12 overscroll-none">
@@ -112,14 +120,14 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
             aria-labelledby="modal-title"
             className="relative w-full h-full sm:h-auto max-h-[100vh] sm:max-h-[90vh] max-w-5xl bg-white sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden outline-none"
           >
-            {/* Header (Sticky) */}
-            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-black/5 bg-white z-10 shrink-0">
-              <span className="font-label-sm text-xs font-bold uppercase tracking-widest text-primary">
+            {/* Header (Sticky / Floating on Mobile) */}
+            <div className="flex items-center justify-between sm:p-6 sm:border-b border-black/5 bg-white z-10 shrink-0">
+              <span className="hidden sm:block font-label-sm text-xs font-bold uppercase tracking-widest text-primary">
                 Case Study
               </span>
               <button
                 onClick={onClose}
-                className="w-10 h-10 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                className="absolute top-4 right-4 sm:static w-10 h-10 rounded-full bg-white/60 sm:bg-black/5 backdrop-blur-md sm:backdrop-blur-none hover:bg-black/10 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-primary z-50"
                 aria-label="Close modal"
               >
                 <span className="material-symbols-outlined text-[20px] text-on-surface">close</span>
@@ -127,7 +135,7 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
             </div>
 
             {/* Scrollable Content */}
-            <div className="overflow-y-auto overflow-x-hidden flex-grow px-5 pb-5 pt-4 sm:px-8 sm:pb-8 sm:pt-6 md:px-12 md:pb-12 md:pt-6 overscroll-contain">
+            <div className="overflow-y-auto overflow-x-hidden flex-grow px-5 pb-5 pt-16 sm:px-8 sm:pb-8 sm:pt-6 md:px-12 md:pb-12 md:pt-6 overscroll-contain">
               
               {/* Top Meta */}
               <div className="flex flex-wrap gap-2 mb-6">
@@ -169,16 +177,16 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
                 {images.length > 1 && (
                   <>
                     <button
-                      onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white focus:outline-none"
+                      onClick={(e) => { e.stopPropagation(); setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1)); }}
+                      className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 backdrop-blur-sm border border-black/10 flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity hover:bg-white focus:outline-none shadow-sm"
                     >
-                      <span className="material-symbols-outlined text-[20px]">arrow_back_ios_new</span>
+                      <span className="material-symbols-outlined text-[16px] sm:text-[20px]">arrow_back_ios_new</span>
                     </button>
                     <button
-                      onClick={() => setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white focus:outline-none"
+                      onClick={(e) => { e.stopPropagation(); setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1)); }}
+                      className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 backdrop-blur-sm border border-black/10 flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity hover:bg-white focus:outline-none shadow-sm"
                     >
-                      <span className="material-symbols-outlined text-[20px]">arrow_forward_ios</span>
+                      <span className="material-symbols-outlined text-[16px] sm:text-[20px]">arrow_forward_ios</span>
                     </button>
                     
                     {/* Dots indicator */}
@@ -253,6 +261,7 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

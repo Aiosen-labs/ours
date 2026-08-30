@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import { createPortal } from "react-dom";
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -16,6 +17,11 @@ type Step = "choice" | "whatsapp" | "email";
 export default function ConsultationModal({ isOpen, onClose, serviceTitle }: ConsultationModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const previouslyFocusedElement = useRef<HTMLElement | null>(null);
+  const [mounted, setMounted] = React.useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const [step, setStep] = useState<Step>("choice");
 
   useEffect(() => {
@@ -350,7 +356,9 @@ export default function ConsultationModal({ isOpen, onClose, serviceTitle }: Con
     </motion.form>
   );
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[100] flex flex-col items-center justify-end md:justify-center p-0 md:p-6 lg:p-12">
@@ -401,6 +409,7 @@ export default function ConsultationModal({ isOpen, onClose, serviceTitle }: Con
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
