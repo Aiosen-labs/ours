@@ -69,7 +69,7 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
         }}
         className="px-margin-desktop max-w-[1400px] mx-auto relative z-10"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 xl:gap-24">
           
           {/* Left: Copy & Contact Options */}
           <motion.div 
@@ -80,10 +80,10 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
             className="lg:col-span-5 flex flex-col justify-center"
           >
             <div className="w-12 h-1 bg-primary mb-8 rounded-full"></div>
-            <h2 className="font-headline-lg text-4xl md:text-[56px] text-white leading-[1.1] tracking-tight mb-6">
+            <h2 className="font-headline-lg text-[28px] sm:text-4xl md:text-[56px] text-white leading-[1.1] tracking-tight mb-4 md:mb-6">
               Let&apos;s build something <span className="text-primary italic font-light">dependable.</span>
             </h2>
-            <p className="font-body-md text-gray-400 text-xl font-light leading-relaxed mb-12 max-w-md">
+            <p className="font-body-md text-gray-400 text-base md:text-xl font-light leading-relaxed mb-8 md:mb-12 max-w-md">
               Tell us what you&apos;re trying to build, improve, or solve. We&apos;ll figure out the right next step together.
             </p>
 
@@ -118,7 +118,7 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
             }}
             className="lg:col-span-7"
           >
-            <div className="bg-[#222222] border border-white/5 rounded-3xl p-6 md:p-12 shadow-2xl relative overflow-hidden">
+            <div className="bg-[#222222] border border-white/5 rounded-3xl p-6 md:p-12 lg:p-8 xl:p-12 shadow-2xl relative overflow-hidden">
               <AnimatePresence mode="wait">
                 {isSuccess ? (
                   <motion.div 

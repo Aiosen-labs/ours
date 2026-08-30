@@ -55,15 +55,18 @@ export default function ConsultationModal({ isOpen, onClose, serviceTitle }: Con
       previouslyFocusedElement.current = document.activeElement as HTMLElement;
       const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
       document.body.style.paddingRight = `${scrollbarWidth}px`;
       modalRef.current?.focus();
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       document.body.style.paddingRight = "0px";
       previouslyFocusedElement.current?.focus();
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       document.body.style.paddingRight = "0px";
     };
   }, [isOpen]);
@@ -208,7 +211,7 @@ export default function ConsultationModal({ isOpen, onClose, serviceTitle }: Con
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto mb-6 px-1" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+      <div className="flex-1 overflow-y-auto mb-6 px-1 overscroll-contain" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
         <style>{`.flex-1::-webkit-scrollbar { display: none; }`}</style>
         
         <div className="relative">

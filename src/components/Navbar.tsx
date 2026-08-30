@@ -67,7 +67,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-white fixed top-0 w-full z-50 border-b border-black/5 shadow-sm shadow-black/5 transition-all">
+      <nav className="bg-[#0A0A0A] fixed top-0 w-full z-50 border-b border-white/5 shadow-sm shadow-black/40 transition-all">
         <div className="flex justify-between items-center px-4 md:px-margin-desktop max-w-[1400px] mx-auto h-20">
           <button onClick={(e) => handleScroll(e, "home")} className="flex items-center gap-3 md:gap-4 z-50 relative">
             <Image
@@ -78,20 +78,20 @@ export default function Navbar() {
               height={40}
               unoptimized
             />
-            <span className="font-headline-lg text-[24px] md:text-headline-lg font-bold text-primary tracking-tighter">
+            <span className="font-display-lg text-[22px] md:text-[28px] font-semibold text-primary tracking-normal">
               AIOSEN
             </span>
           </button>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex gap-8 items-center font-label-sm text-label-sm uppercase tracking-widest">
+          <div className="hidden lg:flex gap-8 items-center font-body-md text-sm tracking-wide">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
                 <button 
                   key={link.name}
                   onClick={(e) => handleScroll(e, link.id)}
-                  className={`transition-colors px-4 py-2 rounded-full active:scale-95 duration-200 ${isActive ? 'text-primary font-bold bg-primary/5' : 'text-on-surface-variant hover:text-primary hover:bg-black/5'}`} 
+                  className={`transition-colors px-4 py-2 rounded-full active:scale-95 duration-200 ${isActive ? 'text-primary font-bold bg-primary/10' : 'text-gray-300 hover:text-white hover:bg-white/5'}`} 
                 >
                   {link.name}
                 </button>
@@ -100,7 +100,7 @@ export default function Navbar() {
           </div>
           
           <div className="hidden lg:flex items-center gap-4">
-            <button onClick={(e) => handleScroll(e, "contact")} className="btn-primary font-label-sm text-label-sm px-6 py-3 rounded-full uppercase tracking-wider font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
+            <button onClick={(e) => handleScroll(e, "contact")} className="btn-primary font-body-md text-sm px-7 py-3.5 rounded-full font-semibold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
               Get Started
             </button>
           </div>
@@ -113,9 +113,9 @@ export default function Navbar() {
               aria-label="Toggle menu"
             >
               <div className="flex flex-col gap-1.5 justify-center items-center w-6 h-6">
-                <span className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                <span className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`block w-6 h-0.5 bg-black transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+                <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
               </div>
             </button>
           </div>
@@ -130,7 +130,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-white pt-24 px-6 pb-8 flex flex-col justify-between overflow-y-auto lg:hidden"
+            className="fixed inset-0 z-40 bg-[#1A1A1A] pt-24 px-6 pb-8 flex flex-col justify-between overflow-y-auto lg:hidden"
           >
             <div className="flex flex-col gap-6 mt-8">
               {navLinks.map((link) => {
@@ -139,7 +139,7 @@ export default function Navbar() {
                   <button 
                     key={link.name}
                     onClick={(e) => handleScroll(e, link.id)} 
-                    className={`text-left font-headline-lg text-4xl font-bold transition-colors ${isActive ? 'text-primary' : 'text-on-surface hover:text-primary'}`} 
+                    className={`text-left font-body-md text-3xl font-bold transition-colors ${isActive ? 'text-primary' : 'text-gray-300 hover:text-white'}`} 
                   >
                     {link.name}
                   </button>
@@ -150,7 +150,7 @@ export default function Navbar() {
             <div className="mt-12 flex flex-col gap-4">
               <button 
                 onClick={(e) => handleScroll(e, "contact")}
-                className="block w-full btn-primary font-label-sm text-sm px-6 py-4 rounded-xl uppercase tracking-wider font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all text-center"
+                className="block w-full btn-primary font-body-md text-sm px-6 py-4 rounded-xl font-semibold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all text-center"
               >
                 Get Started
               </button>

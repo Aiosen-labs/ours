@@ -103,9 +103,78 @@ const servicesConfig: ServiceData[] = [
   }
 ];
 
+// ── Shared service detail content ──────────────────────────────────────────────
+function ServiceDetail({
+  service,
+  onDiscuss,
+}: {
+  service: ServiceData;
+  onDiscuss: () => void;
+}) {
+  return (
+    <div className="flex flex-col justify-between h-full">
+      <div>
+        <span className="font-label-sm text-[10px] uppercase tracking-widest text-primary font-bold block mb-3">
+          {service.number} — {service.label}
+        </span>
+        <h3 className="font-headline-lg text-2xl md:text-[36px] lg:text-[48px] text-on-surface leading-[1.1] tracking-tight mb-5">
+          {service.title}
+        </h3>
+        <p className="font-body-md text-on-surface text-base md:text-xl font-medium leading-relaxed mb-4">
+          {service.shortDescription}
+        </p>
+        <p className="font-body-md text-on-surface-variant text-sm md:text-lg font-light leading-relaxed mb-7">
+          {service.detailedDescription}
+        </p>
+
+        {service.capabilities && service.capabilities.length > 0 && (
+          <div className="mb-7">
+            <h4 className="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-4">
+              What We Can Help With
+            </h4>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-6">
+              {service.capabilities.map((cap, i) => (
+                <li key={i} className="flex gap-2.5 items-start font-body-md text-on-surface text-sm">
+                  <span className="material-symbols-outlined text-primary text-[16px] mt-0.5 shrink-0">check</span>
+                  <span className="leading-tight">{cap}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {service.idealFor && (
+          <div className="mb-7 p-4 md:p-6 bg-black/[0.02] rounded-xl border border-black/5">
+            <h4 className="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-2">
+              Ideal For
+            </h4>
+            <p className="font-body-md text-on-surface text-sm md:text-base font-light leading-relaxed">
+              {service.idealFor}
+            </p>
+          </div>
+        )}
+      </div>
+
+      <div className="pt-6 border-t border-black/5 mt-2">
+        <button
+          onClick={onDiscuss}
+          className="bg-dark-surface text-white hover:bg-primary font-label-sm text-xs px-6 py-4 rounded-xl transition-colors duration-300 uppercase tracking-widest font-bold shadow-md flex items-center justify-center gap-3 w-full sm:w-auto group"
+        >
+          Discuss this service
+          <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function ServicesShowcase() {
+  // Desktop: active panel index
   const [[activeIndex, direction], setPage] = useState([0, 0]);
+  // Mobile: which accordion item is open (null = all closed)
+  const [openAccordion, setOpenAccordion] = useState<number | null>(0);
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalService, setModalService] = useState(servicesConfig[0]);
 
   const activeService = servicesConfig[activeIndex];
 
@@ -122,32 +191,21 @@ export default function ServicesShowcase() {
     setPage([index, dir]);
   };
 
-  const variants = {
-    enter: (direction: number) => ({
-      y: direction > 0 ? 20 : -20,
-      opacity: 0,
-    }),
-    center: {
-      zIndex: 1,
-      y: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      y: direction < 0 ? 20 : -20,
-      opacity: 0,
-    })
+  const handleDiscuss = (service: ServiceData) => {
+    setModalService(service);
+    setModalOpen(true);
   };
 
-  const listItemVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: { opacity: 1, x: 0 }
+  const variants = {
+    enter: (direction: number) => ({ y: direction > 0 ? 20 : -20, opacity: 0 }),
+    center: { zIndex: 1, y: 0, opacity: 1 },
+    exit: (direction: number) => ({ zIndex: 0, y: direction < 0 ? 20 : -20, opacity: 0 }),
   };
 
   return (
     <>
       <section id="services" className="bg-[#FAF9F6] pt-10 md:pt-16 pb-20 md:pb-32 border-t border-black/5">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -158,31 +216,95 @@ export default function ServicesShowcase() {
           className="px-margin-desktop max-w-[1400px] mx-auto"
         >
           {/* Heading */}
-          <motion.div 
+          <motion.div
             variants={{
               hidden: { opacity: 0, y: 15 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
             }}
-            className="mb-16 md:mb-24"
+            className="mb-10 md:mb-24"
           >
-            <h2 className="font-headline-lg text-4xl md:text-[56px] text-on-surface leading-[1.1] tracking-tight max-w-3xl mb-4 md:mb-6">
+            <h2 className="font-headline-lg text-[26px] sm:text-3xl md:text-[56px] text-on-surface leading-[1.1] tracking-tight max-w-3xl mb-3 md:mb-6">
               Technology built around <br className="hidden md:block" />
               how your business works.
             </h2>
-            <p className="font-body-md text-on-surface-variant text-xl font-light leading-relaxed max-w-2xl">
+            <p className="font-body-md text-on-surface-variant text-base md:text-xl font-light leading-relaxed max-w-2xl">
               From building new digital products to improving the systems you already rely on, we help businesses create dependable technology that evolves with their needs.
             </p>
           </motion.div>
 
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
-            
+          {/* ── MOBILE / TABLET: Accordion ── */}
+          <div className="flex flex-col gap-2 lg:hidden">
+            {servicesConfig.map((service, index) => {
+              const isOpen = openAccordion === index;
+              return (
+                <motion.div
+                  key={service.id}
+                  variants={{
+                    hidden: { opacity: 0, y: 10 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }
+                  }}
+                  className={`rounded-2xl border overflow-hidden transition-colors duration-300 ${
+                    isOpen
+                      ? "border-primary/20 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
+                      : "border-black/5 bg-white/60"
+                  }`}
+                >
+                  {/* Accordion Header / Toggle */}
+                  <button
+                    onClick={() => setOpenAccordion(isOpen ? null : index)}
+                    className="w-full flex items-center justify-between px-5 py-4 text-left group"
+                    aria-expanded={isOpen}
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className={`font-label-sm text-[10px] uppercase font-bold tracking-widest w-8 shrink-0 ${isOpen ? "text-primary" : "text-on-surface-variant"}`}>
+                        {service.number}
+                      </span>
+                      <span className={`font-headline-lg-mobile text-base font-semibold transition-colors ${isOpen ? "text-on-surface" : "text-on-surface-variant"}`}>
+                        {service.title}
+                      </span>
+                    </div>
+                    <motion.span
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      className={`material-symbols-outlined text-[20px] shrink-0 ml-3 transition-colors ${isOpen ? "text-primary" : "text-on-surface-variant"}`}
+                    >
+                      expand_more
+                    </motion.span>
+                  </button>
+
+                  {/* Accordion Body */}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-5 pb-6 border-t border-black/5 pt-5">
+                          <ServiceDetail
+                            service={service}
+                            onDiscuss={() => handleDiscuss(service)}
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* ── DESKTOP: Sticky left nav + animated right panel ── */}
+          <div className="hidden lg:flex flex-row gap-24">
             {/* Left Column: Service Navigation */}
-            <motion.div 
+            <motion.div
               variants={{
                 hidden: { opacity: 0, x: -20 },
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
               }}
-              className="lg:w-1/3 flex flex-col gap-2 shrink-0 lg:sticky lg:top-32 self-start"
+              className="w-1/3 flex flex-col gap-2 shrink-0 lg:sticky lg:top-32 self-start"
             >
               {servicesConfig.map((service, index) => {
                 const isActive = activeIndex === index;
@@ -191,35 +313,32 @@ export default function ServicesShowcase() {
                     key={service.id}
                     onClick={() => handleSelectService(index)}
                     className={`group flex items-center text-left py-4 px-6 rounded-xl transition-all duration-300
-                      ${isActive 
-                        ? 'bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-black/5' 
-                        : 'hover:bg-black/[0.02] border border-transparent'
+                      ${isActive
+                        ? "bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-black/5"
+                        : "hover:bg-black/[0.02] border border-transparent"
                       }`}
                   >
-                    <span className={`font-label-sm text-[10px] uppercase font-bold tracking-widest w-12 shrink-0 transition-colors ${isActive ? 'text-primary' : 'text-on-surface-variant group-hover:text-on-surface'}`}>
+                    <span className={`font-label-sm text-[10px] uppercase font-bold tracking-widest w-12 shrink-0 transition-colors ${isActive ? "text-primary" : "text-on-surface-variant group-hover:text-on-surface"}`}>
                       {service.number}
                     </span>
                     <div className="flex flex-col">
-                      <span className={`font-headline-lg-mobile text-lg font-semibold transition-colors ${isActive ? 'text-on-surface' : 'text-on-surface-variant group-hover:text-on-surface'}`}>
+                      <span className={`font-headline-lg-mobile text-lg font-semibold transition-colors ${isActive ? "text-on-surface" : "text-on-surface-variant group-hover:text-on-surface"}`}>
                         {service.title}
                       </span>
-                      <span className={`font-label-sm text-[9px] uppercase tracking-wider transition-colors ${isActive ? 'text-on-surface-variant' : 'text-black/30'}`}>
+                      <span className={`font-label-sm text-[9px] uppercase tracking-wider transition-colors ${isActive ? "text-on-surface-variant" : "text-black/30"}`}>
                         {service.label}
                       </span>
                     </div>
-                    {/* Active Indicator Arrow */}
-                    <div className={`ml-auto shrink-0 transition-all duration-300 ${isActive ? 'opacity-100 translate-x-0 text-primary' : 'opacity-0 -translate-x-2 text-on-surface-variant'}`}>
-                      <span className="material-symbols-outlined text-[16px]">
-                        arrow_forward_ios
-                      </span>
+                    <div className={`ml-auto shrink-0 transition-all duration-300 ${isActive ? "opacity-100 translate-x-0 text-primary" : "opacity-0 -translate-x-2 text-on-surface-variant"}`}>
+                      <span className="material-symbols-outlined text-[16px]">arrow_forward_ios</span>
                     </div>
                   </button>
                 );
               })}
             </motion.div>
 
-            {/* Right Column: Active Service Panel (Editorial Layout) */}
-            <div className="lg:w-2/3 relative min-h-[500px]">
+            {/* Right Column: Active Service Panel */}
+            <div className="w-2/3 relative min-h-[500px]">
               <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -232,77 +351,23 @@ export default function ServicesShowcase() {
                     y: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.3 }
                   }}
-                  className="bg-white rounded-3xl p-6 md:p-14 lg:p-16 border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.04)] h-full flex flex-col justify-between"
+                  className="bg-white rounded-3xl p-14 lg:p-16 border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.04)] h-full"
                 >
-                  <div className="max-w-3xl">
-                    <span className="font-label-sm text-[10px] uppercase tracking-widest text-primary font-bold block mb-4">
-                      {activeService.number} — {activeService.label}
-                    </span>
-                    <h3 className="font-headline-lg text-3xl md:text-[48px] text-on-surface leading-[1.1] tracking-tight mb-8">
-                      {activeService.title}
-                    </h3>
-                    <p className="font-body-md text-on-surface text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                      {activeService.shortDescription}
-                    </p>
-                    <p className="font-body-md text-on-surface-variant text-lg md:text-xl font-light leading-relaxed mb-10">
-                      {activeService.detailedDescription}
-                    </p>
-
-                    {/* Capabilities */}
-                    {activeService.capabilities && activeService.capabilities.length > 0 && (
-                      <div className="mb-10">
-                        <h4 className="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-5">What We Can Help With</h4>
-                        <motion.ul 
-                          initial="hidden"
-                          animate="visible"
-                          variants={{
-                            visible: { transition: { staggerChildren: 0.05, delayChildren: 0.1 } }
-                          }}
-                          className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6"
-                        >
-                          {activeService.capabilities.map((cap, i) => (
-                            <motion.li key={i} variants={listItemVariants} className="flex gap-3 items-start font-body-md text-on-surface text-sm md:text-base">
-                              <span className="material-symbols-outlined text-primary text-[18px] mt-0.5 shrink-0">check</span>
-                              <span className="leading-tight">{cap}</span>
-                            </motion.li>
-                          ))}
-                        </motion.ul>
-                      </div>
-                    )}
-
-                    {/* Ideal For */}
-                    {activeService.idealFor && (
-                      <div className="mb-10 p-6 bg-black/[0.02] rounded-xl border border-black/5">
-                        <h4 className="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-3">Ideal For</h4>
-                        <p className="font-body-md text-on-surface text-base md:text-lg font-light leading-relaxed">
-                          {activeService.idealFor}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="pt-8 border-t border-black/5 mt-auto">
-                    <button
-                      onClick={() => setModalOpen(true)}
-                      className="bg-dark-surface text-white hover:bg-primary font-label-sm text-xs px-8 py-5 rounded-xl transition-colors duration-300 uppercase tracking-widest font-bold shadow-md flex items-center justify-center gap-3 w-full sm:w-auto group"
-                    >
-                      Discuss this service
-                      <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
-                    </button>
-                  </div>
+                  <ServiceDetail
+                    service={activeService}
+                    onDiscuss={() => handleDiscuss(activeService)}
+                  />
                 </motion.div>
               </AnimatePresence>
             </div>
-
           </div>
         </motion.div>
       </section>
 
-      {/* WhatsApp / Email Consultation Modal */}
-      <ConsultationModal 
-        isOpen={modalOpen} 
-        onClose={() => setModalOpen(false)} 
-        serviceTitle={activeService.title}
+      <ConsultationModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        serviceTitle={modalService.title}
       />
     </>
   );

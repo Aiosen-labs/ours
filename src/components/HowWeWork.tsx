@@ -64,12 +64,12 @@ export default function HowWeWork() {
             <span className="font-label-sm text-xs uppercase tracking-widest text-primary font-bold block mb-4">
               HOW WE WORK
             </span>
-            <h2 className="font-headline-lg text-[40px] md:text-[48px] text-on-surface leading-[1.1] tracking-tight">
+            <h2 className="font-headline-lg text-[30px] md:text-[48px] text-on-surface leading-[1.1] tracking-tight">
               Engineering <br />
               <span className="text-on-surface-variant italic font-light">principles in practice.</span>
             </h2>
           </div>
-          <p className="font-body-md text-on-surface-variant text-xl font-light leading-relaxed max-w-lg">
+          <p className="font-body-md text-on-surface-variant text-base md:text-xl font-light leading-relaxed max-w-lg">
             From the first problem to long-term improvement, we stay focused on building technology that works in the real world.
           </p>
         </motion.div>

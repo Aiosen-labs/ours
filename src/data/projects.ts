@@ -5,96 +5,130 @@ export interface Project {
   tags: string[];
   description: string;
   imageUrl: string;
+  images?: string[];
   problem?: string;
   architecture?: string;
   capabilities?: string[];
   stack?: string[];
+  outcome?: string;
 }
 
 export const projects: Project[] = [
   {
     id: "p1",
-    slug: "quantum-ledger-alpha",
-    title: "Quantum Ledger Alpha",
-    tags: ["Blockchain", "Rust"],
-    description: "A high-throughput distributed ledger system exploring sub-second finality in financial settlements. We engineered a consensus protocol designed to evaluate high-volume transaction processing and node synchronization.",
-    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuC43bF5mNZ5O13H_oXS5JwmzFHJQMp_E03VduB3mlp_M-LuXrtfDVnpBcLZaGgreMQ_n97omJbtzloc-zQDLiCH_B0dT4UXaOqKEAfL1eO1amDS2bXaWTLD6UPS82gs5Rp1oKwqH8Uz5FfTDlCnFjPHDUxT8KdgberU3MqvGqqPWzAflLiUSVz9xU8-Tw-GeG6k9FD5344aKxC02ooc60l8xHX-j7PBOIGnURrfhK_P5IF9Ahg6Myzd",
-    problem: "Traditional financial settlement networks suffer from high latency, expensive consensus mechanisms, and scalability ceilings that prevent real-time cross-border settlements.",
-    architecture: "We built a bespoke directed acyclic graph (DAG) consensus model entirely in Rust. By separating transaction validation from ordering, the system allows asynchronous block generation. State is maintained across a sharded memory grid to eliminate disk I/O bottlenecks.",
-    capabilities: [
-      "Sub-second transaction finality",
-      "High-throughput transaction processing",
-      "Rolling upgrade architecture",
-      "Byzantine Fault Tolerant (BFT) consensus"
+    slug: "commerce-business-platform",
+    title: "Commerce & Business Management Platform",
+    tags: ["E-commerce", "Business Platform", "Analytics"],
+    description: "A customized commerce platform connecting the customer experience with business operations, marketing, analytics, and financial intelligence through a centralized management system.",
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
     ],
-    stack: ["Rust", "Tokio", "gRPC", "RocksDB"]
+    problem: "A growing commerce business needed more than a standard storefront. Day-to-day operations, marketing activity, customer behavior, financial performance, inventory, and order activity needed to be understood through one connected system. The platform also needed to support detailed business analysis rather than relying only on headline revenue figures.",
+    architecture: "We built a customized e-commerce experience together with a comprehensive administration platform designed around the business's operational workflow. The system was structured to give the business team a central place to manage commerce operations and understand performance across multiple areas of the business.",
+    capabilities: [
+      "Custom e-commerce storefront",
+      "Product, category, and inventory management",
+      "Order and fulfilment operations",
+      "Marketing campaigns and promotional workflows",
+      "Subscription management",
+      "Sales and product analytics",
+      "Financial and profitability analytics",
+      "Content, blog, review, and SEO management"
+    ],
+    outcome: "The result is a unified business platform where the storefront and the operational side of the business work together, giving the team a broader view of commerce performance and the information needed to make informed decisions."
   },
   {
     id: "p2",
-    slug: "nexus-cloud-mesh",
-    title: "Nexus Cloud Mesh",
-    tags: ["Cloud Native", "Kubernetes"],
-    description: "Global service mesh architecture exploring seamless connectivity and zero-trust security across multi-cloud environments. The engineering focus was on evaluating latency reduction techniques while maintaining strict compliance frameworks.",
-    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuCz3UZIih-xYWzEJRh1qGr7F7pIB37AXsd3e4k8lyIe-fVaoeHoZc8lYmxURA4g8dDgZjSFHoQExVSMIlkAP9UJqTrSm4spqQ67MUgCZNmaBAg9JeAuvnXB2IMxci4I3UeDVzF29OdFYLs7QjrU4ESPVYXQ9jBC51PlKv-FrOvSM0f4oU1Rk-K41APZ_zdrCcxZd6HXcRqXygw5FAgRqCZ1f-EG4d7fCcJyrJIOrgtLiAFKsrAfE5FbDh5s2MyZrtwg1Q",
-    problem: "Enterprise microservices were scattered across AWS, Azure, and on-premise data centers, leading to security blind spots, complex routing, and massive latency overheads between regions.",
-    architecture: "Engineered a unified control plane using Envoy proxy sidecars. The architecture dynamically routes traffic via the lowest-latency backbone paths while enforcing mTLS everywhere. Configuration is entirely declarative and managed via GitOps.",
-    capabilities: [
-      "Zero-trust mTLS security by default",
-      "Dynamic latency-aware routing",
-      "Multi-cluster, multi-cloud federation",
-      "Automated canary deployments"
+    slug: "pharmaceutical-digital-platform",
+    title: "Pharmaceutical Digital & Content Platform",
+    tags: ["Business Website", "Product Management", "Admin Platform"],
+    description: "A custom company and product platform with centralized administration for managing a broad product portfolio and website content.",
+    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop"
     ],
-    stack: ["Kubernetes", "Envoy", "Istio", "Go", "Prometheus"]
+    problem: "The business needed a professional digital presence while also requiring a practical way for its team to manage a broad product portfolio and website content without depending on developers for routine updates.",
+    architecture: "We built the website from scratch together with an administration platform that centralizes the management of the site's product and content information. The system was designed around the business's specific content and product-management needs rather than a generic website template.",
+    capabilities: [
+      "Custom company website",
+      "Product catalogue and product listings",
+      "Product and category content management",
+      "Website page/content management",
+      "Events and related content management",
+      "Centralized administration interface"
+    ],
+    outcome: "The business receives a custom digital platform with a public website and a centralized administration system for managing its product and website information."
   },
   {
     id: "p3",
-    slug: "hyperion-analytics",
-    title: "Hyperion Analytics",
-    tags: ["Data Science", "Python"],
-    description: "Predictive analytics engine exploring the processing of large-scale market data in real-time. This system evaluates machine learning pipelines for predictive signal generation and temporal anomaly detection.",
-    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDQmX20O8Z9r4X6P531t5LqG3r8R9z8wY9f8t1B4k2N5w7v6x9z8wY9f8t1B4k2N5w7v6x9z8wY9f8t1B4k2N5w7v6x9z8wY9f8t1B4k2N5w7v6x9z8wY9f8t1B4k2",
-    problem: "Ingesting, normalizing, and running inference on tick-level market data across global exchanges previously took hours, rendering the signals useless for intraday strategies.",
-    architecture: "A distributed streaming architecture built on Apache Kafka and Apache Flink. Complex event processing evaluates millions of events per second against deployed ML models stored in a low-latency feature store.",
-    capabilities: [
-      "Real-time event processing architecture",
-      "Automated model retraining pipelines",
-      "Sub-millisecond inference latency",
-      "Temporal anomaly detection"
+    slug: "financial-operations-platform",
+    title: "Financial Operations & Profitability Platform",
+    tags: ["Business Software", "Financial Operations", "Analytics"],
+    description: "A custom web and mobile platform that centralizes client activity, financial tracking, business analytics, history, and reporting for a financial-services operation.",
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop"
     ],
-    stack: ["Python", "Apache Flink", "Kafka", "TensorFlow", "Redis"]
+    problem: "The business owner had limited time to manually review client-level information and monthly financial activity. The goal was to make important business information accessible through a centralized system rather than requiring constant manual review and calculation.",
+    architecture: "We built the platform from scratch around the company's specific financial and operational workflow. The system collects operational data entered through the management interface and turns it into consolidated dashboards, client views, historical information, and reports for the business owner.",
+    capabilities: [
+      "Client management and financial tracking",
+      "Monthly settlement visibility",
+      "Business performance dashboard",
+      "Consolidated analytics and historical records",
+      "Custom business-specific calculations",
+      "PDF and Excel report generation"
+    ],
+    outcome: "Instead of relying heavily on manual review, the owner can open the platform and quickly understand how the business is performing, review client activity, and access relevant financial reports."
   },
   {
     id: "p4",
-    slug: "aegis-firewall",
-    title: "Aegis Firewall",
-    tags: ["Security", "C++"],
-    description: "An experimental application firewall capable of deep packet inspection. The project demonstrates autonomous packet filtering techniques and kernel-level routing for network resilience.",
-    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuE9q7R5z3W1u8I4o2P6y5T3e1R8u9I4o2P6y5T3e1R8u9I4o2P6y5T3e1R8u9I4o2P6y5T3e1R8u9I4o2P6y5T3e1R8u9I4o2P6y5T3e1R8u9I4o2P6y5T3e1R8u9I4o2P6",
-    problem: "Legacy firewalls rely on static rule sets and introduce unacceptable network latency during deep packet inspection.",
-    architecture: "Built from scratch using eBPF/XDP to bypass the standard Linux networking stack. Packets are analyzed directly at the network interface card (NIC) level, allowing autonomous threat mitigation without CPU overhead.",
-    capabilities: [
-      "Wire-speed deep packet inspection",
-      "eBPF/XDP kernel-level routing",
-      "Autonomous threat mitigation models",
-      "Zero-day signature detection via ML"
+    slug: "real-time-mobile-challenge",
+    title: "Real-Time Mobile Challenge Platform",
+    tags: ["Mobile Platform", "Real-Time Systems", "Administration"],
+    description: "A multi-role mobile platform engineered around real-time activity, location-aware functionality, managed challenges, and demanding mobile reliability requirements.",
+    imageUrl: "https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=2070&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop"
     ],
-    stack: ["C++", "eBPF", "Linux Kernel", "DPDK"]
+    problem: "The project involved significant engineering challenges around reliable live GPS handling, mobile background behavior, battery efficiency, and real-time activity reliability while preventing abuse and manipulation.",
+    architecture: "The platform features separate administrative, merchant, and user layers. The administration layer manages the platform, merchants create challenge-based experiences, and users participate in active sessions. This required careful coordination between mobile behavior and server-side processing.",
+    capabilities: [
+      "Multi-role mobile platform (Admin, Merchant, User)",
+      "Challenge and reward configuration",
+      "Real-time location-aware functionality",
+      "Mobile activity handling",
+      "Client-side and server-side validation",
+      "Subscription-related platform management"
+    ],
+    outcome: "We delivered a production mobile platform with multiple roles and real-time functionality while addressing demanding mobile reliability, battery, and abuse-prevention requirements."
   },
   {
     id: "p5",
-    slug: "omnichannel-hub",
-    title: "OmniChannel Hub",
-    tags: ["E-Commerce", "React"],
-    description: "Unified commerce platform prototype integrating inventory, logistics, and storefronts. The architecture demonstrates how to handle high-concurrency traffic spikes using event-sourced data patterns.",
-    imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuF8s6Q4x2V0t7H3m1O5w4S2d0Q8s6Q4x2V0t7H3m1O5w4S2d0Q8s6Q4x2V0t7H3m1O5w4S2d0Q8s6Q4x2V0t7H3m1O5w4S2d0Q8s6Q4x2V0t7H3m1O5w4S2d0Q8",
-    problem: "Siloed legacy systems caused inventory mismatches, slow fulfillment, and website crashes during peak retail events.",
-    architecture: "A headless commerce approach decoupling the React frontend from the GraphQL orchestration layer. Inventory state is managed via an event-sourced architecture to guarantee consistency across thousands of retail nodes.",
-    capabilities: [
-      "Event-sourced inventory management",
-      "Headless storefront architecture",
-      "GraphQL API orchestration",
-      "Auto-scaling microservices"
+    slug: "ecommerce-content-platform",
+    title: "E-commerce & Content Management Platform",
+    tags: ["E-commerce", "CMS", "Business Platform"],
+    description: "A custom commerce and content platform combining e-commerce, enquiry management, location administration, and reusable content workflows.",
+    imageUrl: "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=2064&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=2064&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1481437156560-3205f6a55735?q=80&w=2095&auto=format&fit=crop"
     ],
-    stack: ["React", "Node.js", "GraphQL", "PostgreSQL", "Kafka"]
+    problem: "The business needed a flexible digital platform that could support product discovery, e-commerce workflows, customer enquiries, and frequently changing business content without requiring developers to manually rebuild pages and information.",
+    architecture: "We built the public website and administration platform from scratch, with custom management tools for commerce, enquiries, content, and business locations. A reusable page-template approach was also created for different content requirements.",
+    capabilities: [
+      "Custom e-commerce website with product catalogue",
+      "Content and enquiry management",
+      "Interactive branch/location map",
+      "Country and branch management",
+      "Reusable page templates",
+      "Centralized administration"
+    ],
+    outcome: "The result is a flexible commerce and content platform that gives the business greater control over products, enquiries, locations, and website content while reducing dependence on repeated development work."
   }
 ];

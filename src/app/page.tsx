@@ -52,12 +52,7 @@ export default function Home() {
           </div>
         </FadeIn>
 
-        {/* Section 5: Testimonials */}
-        <FadeIn delay={100}>
-          <div id="testimonials">
-            <Testimonials />
-          </div>
-        </FadeIn>
+
 
         {/* Section 6: Contact */}
         <FadeIn delay={100}>

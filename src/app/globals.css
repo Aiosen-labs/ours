@@ -66,6 +66,24 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Responsive container padding — overrides the fixed 48px on small screens */
+.px-margin-desktop {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media (min-width: 640px) {
+  .px-margin-desktop {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+}
+@media (min-width: 1024px) {
+  .px-margin-desktop {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
 .mesh-bg {
   background-image: 
       radial-gradient(at 0% 0%, rgba(197, 160, 89, 0.05) 0px, transparent 40%),
