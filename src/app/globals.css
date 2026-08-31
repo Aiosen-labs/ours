@@ -25,12 +25,12 @@
   --spacing-gutter: 24px;
   --spacing-max-width: 1440px;
 
-  --font-label-sm: "JetBrains Mono", monospace;
-  --font-headline-lg-mobile: "Outfit", sans-serif;
-  --font-display-lg-mobile: "Outfit", sans-serif;
-  --font-headline-lg: "Outfit", sans-serif;
+  --font-label-sm: "Inter", sans-serif;
+  --font-headline-lg-mobile: "Inter", sans-serif;
+  --font-display-lg-mobile: "Inter", sans-serif;
+  --font-headline-lg: "Inter", sans-serif;
   --font-body-md: "Inter", sans-serif;
-  --font-display-lg: "Outfit", sans-serif;
+  --font-display-lg: "Inter", sans-serif;
 
   --text-label-sm: 12px;
   --text-label-sm--line-height: 16px;

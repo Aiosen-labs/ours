@@ -23,21 +23,8 @@ export default function HeroContent() {
     <motion.div 
       ref={ref}
       style={{ y, opacity }}
-      className="relative z-10 px-margin-desktop max-w-[850px] mx-auto flex flex-col items-center text-center space-y-12"
+      className="relative z-10 px-margin-desktop max-w-[1000px] mx-auto flex flex-col items-center text-center space-y-12"
     >
-      {/* 1. Badge Entrance */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 1.0 }}
-        className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/10 shadow-[0_0_20px_rgba(197,160,89,0.08)]"
-      >
-        <span className="w-2 h-2 rounded-full bg-primary/80 shadow-[0_0_8px_rgba(197,160,89,0.3)] shrink-0"></span>
-        <span className="font-label-sm text-[8px] sm:text-[10px] text-gray-300 uppercase tracking-[0.15em] font-bold text-center leading-tight">
-          SOFTWARE ENGINEERING • TECHNOLOGY CONSULTING
-        </span>
-      </motion.div>
-
       {/* 2. Staggered Headline Reveal */}
       <TextReveal
         baseDelay={1.3}
@@ -46,7 +33,7 @@ export default function HeroContent() {
           <span key="1">We Build the Systems</span>,
           <span key="2" className="inline-flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 mt-2 md:mt-0">
             Behind{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary-container relative inline-block pl-1 md:pl-2">
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary-container relative inline-block pl-1 md:pl-2 whitespace-nowrap">
               What&apos;s Next.
               <div className="absolute -bottom-1 left-1 md:left-2 w-[calc(100%-4px)] md:w-[calc(100%-8px)] h-[3px] bg-primary/20 rounded-full">
                 <div className="absolute inset-0 bg-primary/40 rounded-full animate-[pulse_3s_ease-in-out_infinite] shadow-[0_0_12px_rgba(197,160,89,0.3)]"></div>
