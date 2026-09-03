@@ -154,7 +154,7 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
                 {project.title}
               </h2>
               
-              <p className="font-body-md text-on-surface-variant text-base sm:text-lg md:text-xl font-light leading-relaxed mb-10 max-w-3xl">
+              <p className="font-body-md text-on-surface-variant text-base sm:text-lg md:text-xl font-light leading-relaxed mb-10 max-w-3xl text-justify">
                 {project.description}
               </p>
 
@@ -212,7 +212,7 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
                   {project.problem && (
                     <div>
                       <h3 className="font-label-sm text-xs font-bold uppercase tracking-widest text-on-surface mb-3">The Challenge</h3>
-                      <p className="font-body-md text-on-surface-variant text-sm sm:text-base leading-relaxed">
+                      <p className="font-body-md text-on-surface-variant text-sm sm:text-base leading-relaxed text-justify">
                         {project.problem}
                       </p>
                     </div>
@@ -221,7 +221,7 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
                   {project.architecture && (
                     <div>
                       <h3 className="font-label-sm text-xs font-bold uppercase tracking-widest text-on-surface mb-3">Our Approach</h3>
-                      <p className="font-body-md text-on-surface-variant text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
+                      <p className="font-body-md text-on-surface-variant text-sm sm:text-base leading-relaxed whitespace-pre-wrap text-justify">
                         {project.architecture}
                       </p>
                     </div>

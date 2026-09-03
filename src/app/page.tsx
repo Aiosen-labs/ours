@@ -22,10 +22,14 @@ export default function Home() {
         {/* Hero Section */}
         <FadeIn delay={100}>
           <div id="home" data-section="hero">
-            <section className="relative w-full min-h-[90vh] flex items-center justify-center -mt-28 pt-28 pb-20 border-b border-white/10">
+            <section className="relative w-full min-h-[calc(100svh-112px)] flex items-center justify-center pb-20 border-b border-black/[0.05] bg-background overflow-hidden perspective-1000">
+              {/* Grid pattern */}
+              <div className="absolute inset-0 hero-grid pointer-events-none" />
+              {/* Soft blue ambient for antigravity feel */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(15,82,186,0.06) 0%, transparent 60%)" }} />
               <HeroAnimation />
-              {/* Gradient overlay to ensure text readability */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/90 z-[5]"></div>
+              {/* No dark vignette needed in light mode, just clean gradients */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/50 z-[5] pointer-events-none" />
               <HeroContent />
             </section>
           </div>

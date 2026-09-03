@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const WHATSAPP_NUMBER = "+1234567890"; // Mock number
+const WHATSAPP_NUMBER = "+917200670847";
 
 const serviceOptions = [
   "Software Engineering",
@@ -45,9 +45,9 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
   };
 
   const handleWhatsAppRedirect = () => {
-    let waText = "Hi Aiosen Team,\n\nI'd like to discuss a project.";
+    let waText = "Hi Aiosenlabs Team,\n\nI'd like to discuss a project.";
     if (selectedService) {
-      waText = `Hi Aiosen Team,\n\nI'm interested in your ${selectedService} services and would like to discuss my requirements.`;
+      waText = `Hi Aiosenlabs Team,\n\nI'm interested in your ${selectedService} services and would like to discuss my requirements.`;
     }
     const encodedMessage = encodeURIComponent(waText);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER.replace(/[^0-9]/g, '')}?text=${encodedMessage}`;
@@ -55,9 +55,9 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
   };
 
   return (
-    <section id="contact" className="bg-[#1A1A1A] py-20 md:py-32 border-t border-white/5 relative overflow-hidden">
-      {/* Subtle Background Glow */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+    <section id="contact" className="bg-background py-20 md:py-32 border-t border-black/[0.06] relative overflow-hidden">
+      {/* Single subtle blue glow */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(15,82,186,0.06) 0%, transparent 60%)" }}></div>
 
       <motion.div
         initial="hidden"
@@ -80,20 +80,20 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
             className="lg:col-span-5 flex flex-col justify-center"
           >
             <div className="w-12 h-1 bg-primary mb-8 rounded-full"></div>
-            <h2 className="font-headline-lg text-[28px] sm:text-4xl md:text-[56px] text-white leading-[1.1] tracking-tight mb-4 md:mb-6">
+            <h2 className="font-headline-lg text-[28px] sm:text-4xl md:text-[52px] text-on-background leading-[1.1] tracking-tight mb-4 md:mb-6">
               Let&apos;s build something <span className="text-primary italic font-light">dependable.</span>
             </h2>
-            <p className="font-body-md text-gray-400 text-base md:text-xl font-light leading-relaxed mb-8 md:mb-12 max-w-md">
+            <p className="font-body-md text-on-surface-variant text-base md:text-xl font-light leading-relaxed mb-8 md:mb-12 max-w-md text-justify">
               Tell us what you&apos;re trying to build, improve, or solve. We&apos;ll figure out the right next step together.
             </p>
 
             <div className="flex flex-col gap-6">
-              <span className="font-label-sm text-[10px] uppercase tracking-widest text-gray-500 font-bold block">
+              <span className="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant font-bold block">
                 Quick Conversation
               </span>
               <button
                 onClick={handleWhatsAppRedirect}
-                className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group w-full max-w-md"
+                className="flex items-center justify-between p-4 rounded-xl border border-black/[0.08] bg-black/[0.03] hover:bg-white/10 transition-colors group w-full max-w-md"
               >
                 <div className="flex items-center gap-4 text-left">
                   <div className="w-10 h-10 rounded-full bg-[#25D366]/20 flex items-center justify-center text-[#25D366]">
@@ -102,10 +102,10 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
                     </svg>
                   </div>
                   <div>
-                    <span className="block font-headline-lg-mobile text-sm font-semibold text-white">Continue to WhatsApp</span>
+                    <span className="block font-headline-lg-mobile text-sm font-semibold text-on-background">Continue to WhatsApp</span>
                   </div>
                 </div>
-                <span className="material-symbols-outlined text-white/20 group-hover:text-white transition-colors">arrow_forward</span>
+                <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">arrow_forward</span>
               </button>
             </div>
           </motion.div>
@@ -118,7 +118,7 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
             }}
             className="lg:col-span-7"
           >
-            <div className="bg-[#222222] border border-white/5 rounded-3xl p-6 md:p-12 lg:p-8 xl:p-12 shadow-2xl relative overflow-hidden">
+            <div className="glass-panel rounded-2xl p-6 md:p-12 lg:p-8 xl:p-12 shadow-sm relative overflow-hidden perspective-1000 transition-transform duration-700 ease-out hover:rotate-x-1 hover:-translate-y-1" style={{ transformStyle: "preserve-3d" }}>
               <AnimatePresence mode="wait">
                 {isSuccess ? (
                   <motion.div
@@ -128,11 +128,11 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
                     exit={{ opacity: 0, scale: 0.95 }}
                     className="flex flex-col items-center justify-center h-full min-h-[400px] text-center"
                   >
-                    <div className="w-16 h-16 rounded-full bg-primary/20 text-primary flex items-center justify-center mb-6">
+                    <div className="w-16 h-16 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6">
                       <span className="material-symbols-outlined text-[32px]">check_circle</span>
                     </div>
-                    <h3 className="font-headline-lg-mobile text-2xl text-white mb-3">Request Received</h3>
-                    <p className="font-body-md text-gray-400">Thank you. An Aiosen architect will be in touch shortly.</p>
+                    <h3 className="font-headline-lg-mobile text-2xl text-on-background mb-3">Request Received</h3>
+                    <p className="font-body-md text-on-surface-variant">Thank you. An Aiosenlabs architect will be in touch shortly.</p>
                   </motion.div>
                 ) : (
                   <motion.form
@@ -145,7 +145,7 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
                   >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label htmlFor="contact-name" className="font-label-sm text-[10px] uppercase tracking-widest text-gray-400 font-semibold">
+                        <label htmlFor="contact-name" className="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant font-semibold">
                           Name (Optional)
                         </label>
                         <input
@@ -153,12 +153,12 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
                           type="text"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                          className="w-full px-4 py-3 rounded-md border border-outline-strong bg-background text-on-background font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60 transition-all"
                           placeholder="Your Name"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label htmlFor="contact-email" className="font-label-sm text-[10px] uppercase tracking-widest text-gray-400 font-semibold">
+                        <label htmlFor="contact-email" className="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant font-semibold">
                           Email <span className="text-primary">*</span>
                         </label>
                         <input
@@ -167,14 +167,14 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
                           required
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
-                          placeholder="you@company.com"
+                          className="w-full px-4 py-3 rounded-md border border-outline-strong bg-background text-on-background font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60 transition-all"
+                          placeholder="aiosenlabs@gmail.com"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="contact-service" className="font-label-sm text-[10px] uppercase tracking-widest text-gray-400 font-semibold">
+                      <label htmlFor="contact-service" className="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant font-semibold">
                         What can we help with? (Optional)
                       </label>
                       <div className="relative">
@@ -182,21 +182,21 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
                           id="contact-service"
                           value={selectedService}
                           onChange={(e) => setSelectedService(e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-white font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors appearance-none cursor-pointer"
+                          className="w-full px-4 py-3 rounded-md border border-outline-strong bg-background text-on-background font-body-md text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60 transition-all appearance-none cursor-pointer"
                         >
-                          <option value="" className="bg-[#222222] text-gray-400">Select a capability</option>
+                          <option value="" className="bg-surface text-on-surface-variant">Select a capability</option>
                           {serviceOptions.map(opt => (
-                            <option key={opt} value={opt} className="bg-[#222222] text-white">{opt}</option>
+                            <option key={opt} value={opt} className="bg-surface text-on-background">{opt}</option>
                           ))}
                         </select>
-                        <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
+                        <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">
                           expand_more
                         </span>
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="contact-message" className="font-label-sm text-[10px] uppercase tracking-widest text-gray-400 font-semibold">
+                      <label htmlFor="contact-message" className="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant font-semibold">
                         Message <span className="text-primary">*</span>
                       </label>
                       <textarea
@@ -204,19 +204,19 @@ export default function ContactSection({ initialServiceContext = "" }: ContactSe
                         required
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        className="w-full min-h-[140px] px-4 py-3 rounded-lg border border-white/10 bg-white/5 text-white font-body-md text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 transition-colors"
+                        className="w-full min-h-[140px] px-4 py-3 rounded-md border border-outline-strong bg-background text-on-background font-body-md text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/60 transition-all"
                         placeholder="Tell us about your requirements..."
                       />
                     </div>
 
                     <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-6">
-                      <p className="font-body-md text-[11px] text-gray-500">
-                        Your email is used only to send your enquiry to Aiosen.
+                      <p className="font-body-md text-[11px] text-on-surface-variant">
+                        Your email is used only to send your enquiry to Aiosenlabs.
                       </p>
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-[#1A1A1A] font-label-sm text-sm uppercase tracking-widest font-bold px-8 py-4 rounded-xl transition-colors flex items-center justify-center gap-3 shadow-md shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full sm:w-auto btn-primary text-white font-label-sm text-[11px] uppercase tracking-[0.1em] font-semibold px-8 py-3.5 rounded-md transition-all flex items-center justify-center gap-3 shadow-sm hover:shadow-md shrink-0 disabled:opacity-40 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? (
                           <span className="material-symbols-outlined animate-spin text-sm">progress_activity</span>

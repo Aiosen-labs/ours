@@ -136,10 +136,10 @@ const NODE_COORDS: Record<string, { cx: number; cy: number }> = {
   "node-api":    { cx: 200,  cy: 300 },
   "node-auth":   { cx: 300,  cy: 450 },
   "node-db":     { cx: 300,  cy: 650 },
-  "node-lb":     { cx: 1240, cy: 350 },
-  "node-worker": { cx: 1140, cy: 500 },
-  "node-cache":  { cx: 1140, cy: 700 },
-  "node-hub":    { cx: 720,  cy: 575 },
+  "node-lb":     { cx: 1240, cy: 300 },
+  "node-worker": { cx: 1140, cy: 450 },
+  "node-cache":  { cx: 1140, cy: 650 },
+  "node-hub":    { cx: 720,  cy: 550 },
 };
 
 const RIPPLE_DURATION = 700;
@@ -352,8 +352,7 @@ export default function HeroAnimation() {
   return (
     <motion.div
       style={{ opacity: archOpacity, scale: archScale }}
-      ref={containerRef}
-      className="absolute inset-0 w-full h-full overflow-hidden bg-[#0A0F1C] flex items-center justify-center"
+      className="absolute inset-0 w-full h-full overflow-hidden bg-transparent flex items-center justify-center"
     >
       <style>{`
         .build-path { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawIn 2s cubic-bezier(0.16,1,0.3,1) forwards; }
@@ -417,73 +416,73 @@ export default function HeroAnimation() {
       `}</style>
 
       {/* Grid */}
-      <div className="absolute inset-0 z-0 grid-bg bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_100%_100%_at_50%_50%,#000_10%,transparent_80%)]" />
+      <div className="absolute inset-0 z-0 grid-bg bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_100%_100%_at_50%_50%,#000_10%,transparent_80%)]" />
       <div className="system-pulse z-0" />
       <div className="light-scan z-20" />
       <div className="ambient-glow absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-[#06B6D4]/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="ambient-glow absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#C5A059]/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="ambient-glow absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[160px] pointer-events-none" />
 
       {/* BACKGROUND LAYER */}
       <motion.div style={prefersReducedMotion ? {} : { x: bgX, y: bgY }} className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none opacity-40">
-        <svg className="w-full h-full text-white" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
-          <g stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.05">
+        <svg className="w-full h-full text-black" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
+          <g stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.08">
             <path d="M -100 100 L 350 100 C 400 100, 400 150, 400 200 L 400 300"        className="build-path desktop-only" style={{ animationDelay: '0.1s' }} />
             <path d="M 1200 800 L 1200 650 C 1200 600, 1250 600, 1300 600 L 1500 600"  className="build-path desktop-only" style={{ animationDelay: '0.3s' }} />
             <path d="M 500 -100 L 500 100 C 500 150, 550 150, 600 150 L 700 150"       className="build-path desktop-only" style={{ animationDelay: '0.5s' }} />
           </g>
           {/* Ambient background particles */}
           {!prefersReducedMotion && ambientParticles.map(ap => (
-            <circle key={ap.id} id={`amb-${ap.id}`} cx={ap.baseX} cy={ap.baseY} r={ap.size} fill="#ffffff" opacity={ap.opacity} />
+            <circle key={ap.id} id={`amb-${ap.id}`} cx={ap.baseX} cy={ap.baseY} r={ap.size} fill="#0D0F14" opacity={ap.opacity * 2} />
           ))}
         </svg>
       </motion.div>
 
       {/* MIDDLE LAYER */}
       <motion.div style={prefersReducedMotion ? {} : { x: midX, y: midY }} className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-        <svg className="w-full h-full text-white" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
-          <g stroke="currentColor" strokeWidth="1">
+        <svg className="w-full h-full text-black" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
+          <g stroke="currentColor" strokeWidth="1" strokeOpacity="0.1">
             <path d="M 0 300 L 200 300 C 260 300, 300 360, 300 450 L 300 650 C 300 730, 230 800, 150 800 L 0 800"              pathLength="100" className="build-path path-active-gold"  style={{ animationDelay: '0.2s' }} />
             <path d="M 200 300 L 200 150 C 200 100, 150 50, 100 50"                                                            pathLength="100" className="build-path desktop-only"      style={{ animationDelay: '0.5s' }} />
             <path d="M 300 650 C 360 650, 400 690, 400 750 L 400 800"                                                         pathLength="100" className="build-path desktop-only"      style={{ animationDelay: '0.8s' }} />
-            <path d="M 300 650 C 600 650, 800 500, 1140 500"                                                                  pathLength="100" className="build-path path-active-amber" style={{ animationDelay: '0.4s' }} />
-            <path d="M 1440 350 L 1240 350 C 1180 350, 1140 410, 1140 500 L 1140 700 C 1140 780, 1210 850, 1290 850 L 1440 850" pathLength="100" className="build-path path-active-cyan" style={{ animationDelay: '0.3s' }} />
-            <path d="M 1140 700 L 1080 700 C 1040 700, 1040 740, 1040 800 L 1040 850"                                         pathLength="100" className="build-path"               style={{ animationDelay: '0.9s' }} />
-            <path d="M 1240 350 L 1240 200 C 1240 150, 1290 100, 1340 100"                                                    pathLength="100" className="build-path desktop-only"      style={{ animationDelay: '0.6s' }} />
+            <path d="M 300 650 C 600 650, 840 450, 1140 450"                                                                  pathLength="100" className="build-path path-active-amber" style={{ animationDelay: '0.4s' }} />
+            <path d="M 1440 300 L 1240 300 C 1180 300, 1140 360, 1140 450 L 1140 650 C 1140 730, 1210 800, 1290 800 L 1440 800" pathLength="100" className="build-path path-active-cyan" style={{ animationDelay: '0.3s' }} />
+            <path d="M 1140 650 C 1080 650, 1040 690, 1040 750 L 1040 800"                                         pathLength="100" className="build-path"               style={{ animationDelay: '0.9s' }} />
+            <path d="M 1240 300 L 1240 150 C 1240 100, 1290 50, 1340 50"                                                    pathLength="100" className="build-path desktop-only"      style={{ animationDelay: '0.6s' }} />
           </g>
 
           {/* Static nodes */}
-          <g fill="currentColor">
+          <g fill="currentColor" opacity="0.15">
             <circle cx="200"  cy="150" r="2.5" className="build-node desktop-only" style={{ animationDelay: '1.2s' }} />
             <circle cx="150"  cy="800" r="3"   className="build-node"              style={{ animationDelay: '1.5s' }} />
-            <circle cx="1240" cy="200" r="2"   className="build-node desktop-only" style={{ animationDelay: '1.3s' }} />
-            <circle cx="1040" cy="700" r="3"   className="build-node"              style={{ animationDelay: '1.7s' }} />
-            <circle cx="400"  cy="650" r="2"   className="build-node desktop-only" style={{ animationDelay: '1.6s' }} />
-            <circle cx="1290" cy="850" r="4"   className="build-node"              style={{ animationDelay: '1.4s' }} />
+            <circle cx="1240" cy="150" r="2"   className="build-node desktop-only" style={{ animationDelay: '1.3s' }} />
+            <circle cx="1040" cy="750" r="3"   className="build-node"              style={{ animationDelay: '1.7s' }} />
+            <circle cx="400"  cy="750" r="2"   className="build-node desktop-only" style={{ animationDelay: '1.6s' }} />
+            <circle cx="1290" cy="800" r="4"   className="build-node"              style={{ animationDelay: '1.4s' }} />
           </g>
 
           {/* Causal sync nodes */}
-          <g fill="currentColor">
+          <g fill="currentColor" opacity="0.15">
             <circle id="node-api"    cx="200"  cy="300" r="3"   className="build-node" style={{ animationDelay: '0.8s' }} />
             <circle id="node-auth"   cx="300"  cy="450" r="2.5" className="build-node" style={{ animationDelay: '1.0s' }} />
             <circle id="node-db"     cx="300"  cy="650" r="4"   className="build-node" style={{ animationDelay: '1.2s' }} />
-            <circle id="node-lb"     cx="1240" cy="350" r="4"   className="build-node" style={{ animationDelay: '0.9s' }} />
-            <circle id="node-worker" cx="1140" cy="500" r="2.5" className="build-node" style={{ animationDelay: '1.1s' }} />
-            <circle id="node-cache"  cx="1140" cy="700" r="3"   className="build-node" style={{ animationDelay: '1.3s' }} />
+            <circle id="node-lb"     cx="1240" cy="300" r="4"   className="build-node" style={{ animationDelay: '0.9s' }} />
+            <circle id="node-worker" cx="1140" cy="450" r="2.5" className="build-node" style={{ animationDelay: '1.1s' }} />
+            <circle id="node-cache"  cx="1140" cy="650" r="3"   className="build-node" style={{ animationDelay: '1.3s' }} />
           </g>
 
           {/* Central hub */}
-          <circle cx="720" cy="575" r="22" fill="#C5A059" className="hub-glow-ring desktop-only" />
-          <circle cx="720" cy="575" r="5"  fill="#C5A059" id="node-hub" className="build-node hub-node desktop-only" style={{ animationDelay: '1.5s' }} />
+          <circle cx="720" cy="550" r="22" fill="#C5A059" className="hub-glow-ring desktop-only" />
+          <circle cx="720" cy="550" r="5"  fill="#C5A059" id="node-hub" className="build-node hub-node desktop-only" style={{ animationDelay: '1.5s' }} />
 
           {/* Labels */}
           <g fontFamily="monospace">
-            <text x="215" y="295"  className="node-label" fill="#C5A059" style={{ animationDelay: '2s' }}>API GATEWAY</text>
-            <text x="315" y="445"  className="node-label" fill="#C5A059" style={{ animationDelay: '6s' }}>AUTH LAYER</text>
-            <text x="315" y="665"  className="node-label" fill="#C5A059" style={{ animationDelay: '10s' }}>DATABASE</text>
-            <text x="1255" y="345" className="node-label" fill="#06B6D4" style={{ animationDelay: '4s' }}>LOAD BALANCER</text>
-            <text x="1050" y="495" className="node-label" fill="#06B6D4" style={{ animationDelay: '8s' }}>WORKER NODE</text>
-            <text x="1050" y="715" className="node-label" fill="#06B6D4" style={{ animationDelay: '12s' }}>CACHE</text>
-            <text x="735"  y="570" className="node-label desktop-only" fill="#D97706" style={{ animationDelay: '14s' }}>MESSAGE BROKER</text>
+            <text x="215" y="295"  className="node-label" fill="var(--color-primary)" style={{ animationDelay: '2s' }}>API GATEWAY</text>
+            <text x="315" y="445"  className="node-label" fill="var(--color-primary)" style={{ animationDelay: '6s' }}>AUTH LAYER</text>
+            <text x="315" y="665"  className="node-label" fill="var(--color-primary)" style={{ animationDelay: '10s' }}>DATABASE</text>
+            <text x="1255" y="295" className="node-label" fill="var(--color-primary)" style={{ animationDelay: '4s' }}>LOAD BALANCER</text>
+            <text x="1050" y="445" className="node-label" fill="var(--color-primary)" style={{ animationDelay: '8s' }}>WORKER NODE</text>
+            <text x="1050" y="665" className="node-label" fill="var(--color-primary)" style={{ animationDelay: '12s' }}>CACHE</text>
+            <text x="735"  y="545" className="node-label desktop-only" fill="var(--color-primary)" style={{ animationDelay: '14s' }}>MESSAGE BROKER</text>
           </g>
 
           {/* Ripple rings */}
@@ -496,10 +495,10 @@ export default function HeroAnimation() {
         <svg id="fg-svg" ref={svgRef} className="w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
           {/* Ghost paths for getPointAtLength */}
           <path id="path-left"        d="M 0 300 L 200 300 C 260 300, 300 360, 300 450 L 300 650 C 300 730, 230 800, 150 800 L 0 800"              stroke="none" fill="none" />
-          <path id="path-right"       d="M 1440 350 L 1240 350 C 1180 350, 1140 410, 1140 500 L 1140 700 C 1140 780, 1210 850, 1290 850 L 1440 850" stroke="none" fill="none" />
-          <path id="path-bridge"      d="M 300 650 C 600 650, 800 500, 1140 500"                                                                      stroke="none" fill="none" />
+          <path id="path-right"       d="M 1440 300 L 1240 300 C 1180 300, 1140 360, 1140 450 L 1140 650 C 1140 730, 1210 800, 1290 800 L 1440 800" stroke="none" fill="none" />
+          <path id="path-bridge"      d="M 300 650 C 600 650, 840 450, 1140 450"                                                                      stroke="none" fill="none" />
           <path id="path-left-minor"  d="M 200 300 L 200 150 C 200 100, 150 50, 100 50"                                                               stroke="none" fill="none" />
-          <path id="path-right-minor" d="M 1140 700 L 1080 700 C 1040 700, 1040 740, 1040 800 L 1040 850"                                             stroke="none" fill="none" />
+          <path id="path-right-minor" d="M 1140 650 C 1080 650, 1040 690, 1040 750 L 1040 800"                                             stroke="none" fill="none" />
         </svg>
       </motion.div>
     </motion.div>

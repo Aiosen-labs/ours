@@ -117,13 +117,13 @@ function ServiceDetail({
         <span className="font-label-sm text-[10px] uppercase tracking-widest text-primary font-bold block mb-3">
           {service.number} — {service.label}
         </span>
-        <h3 className="font-headline-lg text-2xl md:text-[36px] lg:text-[48px] text-on-surface leading-[1.1] tracking-tight mb-5">
+        <h3 className="font-headline-lg text-2xl md:text-[36px] lg:text-[44px] text-on-background leading-[1.1] tracking-tight mb-5">
           {service.title}
         </h3>
-        <p className="font-body-md text-on-surface text-base md:text-xl font-medium leading-relaxed mb-4">
+        <p className="font-body-md text-on-background text-base md:text-xl font-medium leading-relaxed mb-4 text-justify">
           {service.shortDescription}
         </p>
-        <p className="font-body-md text-on-surface-variant text-sm md:text-lg font-light leading-relaxed mb-7">
+        <p className="font-body-md text-on-surface-variant text-sm md:text-lg font-light leading-relaxed mb-7 text-justify">
           {service.detailedDescription}
         </p>
 
@@ -134,7 +134,7 @@ function ServiceDetail({
             </h4>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-6">
               {service.capabilities.map((cap, i) => (
-                <li key={i} className="flex gap-2.5 items-start font-body-md text-on-surface text-sm">
+                <li key={i} className="flex gap-2.5 items-start font-body-md text-on-background text-sm">
                   <span className="material-symbols-outlined text-primary text-[16px] mt-0.5 shrink-0">check</span>
                   <span className="leading-tight">{cap}</span>
                 </li>
@@ -144,11 +144,11 @@ function ServiceDetail({
         )}
 
         {service.idealFor && (
-          <div className="mb-7 p-4 md:p-6 bg-black/[0.02] rounded-xl border border-black/5">
-            <h4 className="font-label-sm text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-2">
+          <div className="mb-7 p-4 md:p-6 bg-black/[0.02] rounded-xl border border-black/[0.05]">
+            <h4 className="font-label-sm text-[10px] uppercase tracking-widest text-[#7A8199] font-bold mb-2">
               Ideal For
             </h4>
-            <p className="font-body-md text-on-surface text-sm md:text-base font-light leading-relaxed">
+            <p className="font-body-md text-[#2D3244] text-sm md:text-base font-light leading-relaxed text-justify">
               {service.idealFor}
             </p>
           </div>
@@ -158,7 +158,7 @@ function ServiceDetail({
       <div className="pt-6 border-t border-black/5 mt-2">
         <button
           onClick={onDiscuss}
-          className="bg-dark-surface text-white hover:bg-primary font-label-sm text-xs px-6 py-4 rounded-xl transition-colors duration-300 uppercase tracking-widest font-bold shadow-md flex items-center justify-center gap-3 w-full sm:w-auto group"
+          className="bg-surface border border-outline-strong text-on-background hover:bg-primary hover:border-primary hover:text-white font-label-sm text-xs px-6 py-4 rounded-xl transition-all duration-300 uppercase tracking-widest font-bold shadow-sm flex items-center justify-center gap-3 w-full sm:w-auto group hover:shadow-[0_4px_16px_rgba(15,82,186,0.3)]"
         >
           Discuss this service
           <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
@@ -204,7 +204,7 @@ export default function ServicesShowcase() {
 
   return (
     <>
-      <section id="services" className="bg-[#FAF9F6] pt-10 md:pt-16 pb-20 md:pb-32 border-t border-black/5">
+      <section id="services" className="bg-background pt-10 md:pt-16 pb-20 md:pb-32 border-t border-black/[0.05]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -223,11 +223,12 @@ export default function ServicesShowcase() {
             }}
             className="mb-10 md:mb-24"
           >
-            <h2 className="font-headline-lg text-[26px] sm:text-3xl md:text-[56px] text-on-surface leading-[1.1] tracking-tight max-w-3xl mb-3 md:mb-6">
+            <span className="font-label-sm text-[10px] uppercase tracking-widest text-primary font-bold block mb-4">Our Services</span>
+            <h2 className="font-headline-lg text-[26px] sm:text-3xl md:text-[52px] text-on-background leading-[1.1] tracking-tight max-w-3xl mb-3 md:mb-6">
               Technology built around <br className="hidden md:block" />
               how your business works.
             </h2>
-            <p className="font-body-md text-on-surface-variant text-base md:text-xl font-light leading-relaxed max-w-2xl">
+            <p className="font-body-md text-on-surface-variant text-base md:text-xl font-light leading-relaxed max-w-2xl text-justify">
               From building new digital products to improving the systems you already rely on, we help businesses create dependable technology that evolves with their needs.
             </p>
           </motion.div>
@@ -245,8 +246,8 @@ export default function ServicesShowcase() {
                   }}
                   className={`rounded-2xl border overflow-hidden transition-colors duration-300 ${
                     isOpen
-                      ? "border-primary/20 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.06)]"
-                      : "border-black/5 bg-white/60"
+                      ? "border-primary/20 bg-surface shadow-[0_8px_30px_rgba(15,82,186,0.06)]"
+                      : "border-black/[0.05] bg-black/[0.02]"
                   }`}
                 >
                   {/* Accordion Header / Toggle */}
@@ -256,17 +257,17 @@ export default function ServicesShowcase() {
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center gap-4">
-                      <span className={`font-label-sm text-[10px] uppercase font-bold tracking-widest w-8 shrink-0 ${isOpen ? "text-primary" : "text-on-surface-variant"}`}>
+                      <span className={`font-label-sm text-[10px] uppercase font-bold tracking-widest w-8 shrink-0 ${isOpen ? "text-[#3385FF]" : "text-[#7A8199]"}`}>
                         {service.number}
                       </span>
-                      <span className={`font-headline-lg-mobile text-base font-semibold transition-colors ${isOpen ? "text-on-surface" : "text-on-surface-variant"}`}>
+                      <span className={`font-headline-lg-mobile text-base font-semibold transition-colors ${isOpen ? "text-[#0D0F14]" : "text-[#5A6072]"}`}>
                         {service.title}
                       </span>
                     </div>
                     <motion.span
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                      className={`material-symbols-outlined text-[20px] shrink-0 ml-3 transition-colors ${isOpen ? "text-primary" : "text-on-surface-variant"}`}
+                      className={`material-symbols-outlined text-[20px] shrink-0 ml-3 transition-colors ${isOpen ? "text-[#3385FF]" : "text-[#7A8199]"}`}
                     >
                       expand_more
                     </motion.span>
@@ -282,7 +283,7 @@ export default function ServicesShowcase() {
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="px-5 pb-6 border-t border-black/5 pt-5">
+                        <div className="px-5 pb-6 border-t border-black/[0.05] pt-5">
                           <ServiceDetail
                             service={service}
                             onDiscuss={() => handleDiscuss(service)}
@@ -314,18 +315,18 @@ export default function ServicesShowcase() {
                     onClick={() => handleSelectService(index)}
                     className={`group flex items-center text-left py-4 px-6 rounded-xl transition-all duration-300
                       ${isActive
-                        ? "bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-black/5"
+                        ? "bg-surface shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-primary/15"
                         : "hover:bg-black/[0.02] border border-transparent"
                       }`}
                   >
-                    <span className={`font-label-sm text-[10px] uppercase font-bold tracking-widest w-12 shrink-0 transition-colors ${isActive ? "text-primary" : "text-on-surface-variant group-hover:text-on-surface"}`}>
+                    <span className={`font-label-sm text-[10px] uppercase font-bold tracking-widest w-12 shrink-0 transition-colors ${isActive ? "text-primary" : "text-on-surface-variant group-hover:text-on-background"}`}>
                       {service.number}
                     </span>
                     <div className="flex flex-col">
-                      <span className={`font-headline-lg-mobile text-lg font-semibold transition-colors ${isActive ? "text-on-surface" : "text-on-surface-variant group-hover:text-on-surface"}`}>
+                      <span className={`font-headline-lg-mobile text-lg font-semibold transition-colors ${isActive ? "text-on-background" : "text-on-surface-variant group-hover:text-on-background"}`}>
                         {service.title}
                       </span>
-                      <span className={`font-label-sm text-[9px] uppercase tracking-wider transition-colors ${isActive ? "text-on-surface-variant" : "text-black/30"}`}>
+                      <span className={`font-label-sm text-[9px] uppercase tracking-wider transition-colors ${isActive ? "text-on-surface-variant" : "text-on-surface-variant/70"}`}>
                         {service.label}
                       </span>
                     </div>
@@ -351,7 +352,8 @@ export default function ServicesShowcase() {
                     y: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.3 }
                   }}
-                  className="bg-white rounded-3xl p-14 lg:p-16 border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.04)] h-full"
+                  className="glass-panel rounded-3xl p-14 lg:p-16 h-full transition-transform duration-700 ease-out hover:rotate-x-1 hover:-translate-y-1"
+                  style={{ transformStyle: "preserve-3d" }}
                 >
                   <ServiceDetail
                     service={activeService}

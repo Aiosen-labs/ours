@@ -63,7 +63,7 @@ export default function ProjectsShowcase() {
         visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
       }}
       id="projects"
-      className="px-margin-desktop max-w-[1400px] mx-auto pt-20 md:pt-32 pb-10 md:pb-16 border-t border-black/5"
+      className="px-margin-desktop max-w-[1400px] mx-auto pt-20 md:pt-32 pb-10 md:pb-16 border-t border-black/[0.05] bg-background"
     >
       {/* 1. Section Heading */}
       <motion.div
@@ -77,12 +77,12 @@ export default function ProjectsShowcase() {
           SELECTED ENGINEERING
         </span>
         {/* Responsive heading — prevents overflow on mobile */}
-        <h2 className="font-headline-lg text-[32px] sm:text-[42px] md:text-[56px] text-on-surface mb-4 md:mb-6 tracking-tighter font-medium leading-[1.1]">
+        <h2 className="font-headline-lg text-[32px] sm:text-[42px] md:text-[52px] text-on-background mb-4 md:mb-6 tracking-tighter font-medium leading-[1.1]">
           Systems we&apos;ve{" "}
           <span className="italic font-light text-on-surface-variant">engineered</span>{" "}
           to explore what&apos;s possible.
         </h2>
-        <p className="font-body-md text-on-surface-variant max-w-2xl text-base md:text-xl font-light px-2">
+        <p className="font-body-md text-on-surface-variant max-w-2xl text-base md:text-xl font-light px-2 text-justify">
           A selection of systems we&apos;ve designed and engineered to explore ideas, tackle technical
           challenges, and demonstrate how we build.
         </p>
@@ -106,8 +106,11 @@ export default function ProjectsShowcase() {
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20 items-center group"
           >
             {/* Project Visual */}
-            <div className="lg:col-span-7 relative group">
-              <div className="relative aspect-[16/9] md:aspect-[4/3] w-full rounded-2xl overflow-hidden bg-gray-100 border border-black/5 shadow-[0_20px_40px_rgba(0,0,0,0.08)] group-hover:shadow-[0_30px_60px_rgba(0,0,0,0.12)] transition-shadow duration-700">
+            <div className="lg:col-span-7 relative group perspective-1000">
+              <div 
+                className="relative aspect-[16/9] md:aspect-[4/3] w-full rounded-2xl overflow-hidden glass-panel transition-transform duration-700 ease-out hover:rotate-x-1 hover:-translate-y-1"
+                style={{ transformStyle: "preserve-3d" }}
+              >
                 <div className="absolute inset-0 bg-black/5 z-10 mix-blend-overlay" />
                 <AnimatePresence initial={false} mode="wait">
                   <motion.img
@@ -167,18 +170,18 @@ export default function ProjectsShowcase() {
                 {activeProject.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 rounded-md bg-gray-100 text-on-surface-variant font-label-sm text-[10px] uppercase tracking-widest font-bold"
+                    className="px-3 py-1 rounded-md bg-black/[0.03] text-on-surface-variant border border-black/[0.08] font-label-sm text-[10px] uppercase tracking-widest font-bold"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <h3 className="font-headline-lg text-3xl md:text-[48px] text-on-surface leading-[1.1] tracking-tight">
+              <h3 className="font-headline-lg text-3xl md:text-[44px] text-on-background leading-[1.1] tracking-tight">
                 {activeProject.title}
               </h3>
 
-              <p className="font-body-md text-on-surface-variant text-base md:text-lg font-light leading-relaxed">
+              <p className="font-body-md text-on-surface-variant text-base md:text-lg font-light leading-relaxed text-justify">
                 {activeProject.description}
               </p>
 
@@ -187,10 +190,10 @@ export default function ProjectsShowcase() {
                   onClick={() => setIsModalOpen(true)}
                   className="group inline-flex items-center gap-3 bg-transparent border-none p-0 cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300">
+                  <div className="w-10 h-10 rounded-full border border-outline-strong flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300 text-on-surface-variant">
                     <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                   </div>
-                  <span className="font-label-sm text-xs font-bold uppercase tracking-widest text-on-surface group-hover:text-primary transition-colors">
+                  <span className="font-label-sm text-xs font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-primary transition-colors">
                     View Case Study
                   </span>
                 </button>
@@ -206,7 +209,7 @@ export default function ProjectsShowcase() {
           hidden: { opacity: 0, y: 20 },
           visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
         }}
-        className="border-t border-black/5 pt-6 md:pt-8"
+        className="border-t border-black/[0.05] pt-6 md:pt-8"
       >
         {/* Rail header with counter + arrow buttons */}
         <div className="flex items-center justify-between mb-5 md:mb-6">
@@ -215,7 +218,7 @@ export default function ProjectsShowcase() {
           </span>
 
           <div className="flex items-center gap-3">
-            <span className="font-label-sm text-xs md:text-sm tracking-widest text-on-surface">
+            <span className="font-label-sm text-xs md:text-sm tracking-widest text-on-surface-variant">
               {String(activeIndex + 1).padStart(2, "0")} &mdash; {String(projects.length).padStart(2, "0")}
             </span>
             {/* Arrow buttons */}
@@ -224,7 +227,7 @@ export default function ProjectsShowcase() {
                 onClick={goPrev}
                 disabled={activeIndex === 0}
                 aria-label="Previous project"
-                className="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center transition-all duration-200 hover:bg-primary hover:border-primary hover:text-white disabled:opacity-25 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:border-black/10 disabled:hover:text-current"
+                className="w-9 h-9 rounded-full border border-outline-strong text-on-surface-variant flex items-center justify-center transition-all duration-200 hover:bg-primary hover:border-primary hover:text-white disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:border-outline-strong disabled:hover:text-current"
               >
                 <span className="material-symbols-outlined text-[16px]">arrow_back_ios</span>
               </button>
@@ -232,7 +235,7 @@ export default function ProjectsShowcase() {
                 onClick={goNext}
                 disabled={activeIndex === projects.length - 1}
                 aria-label="Next project"
-                className="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center transition-all duration-200 hover:bg-primary hover:border-primary hover:text-white disabled:opacity-25 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:border-black/10 disabled:hover:text-current"
+                className="w-9 h-9 rounded-full border border-outline-strong text-on-surface-variant flex items-center justify-center transition-all duration-200 hover:bg-primary hover:border-primary hover:text-white disabled:opacity-20 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:border-outline-strong disabled:hover:text-current"
               >
                 <span className="material-symbols-outlined text-[16px]">arrow_forward_ios</span>
               </button>
@@ -260,8 +263,8 @@ export default function ProjectsShowcase() {
                   }}
                   className={`flex items-center gap-3 md:gap-4 w-[240px] md:w-[300px] lg:w-[320px] text-left p-3 md:p-4 rounded-xl border transition-all duration-300 snap-start
                     ${isActive
-                      ? "border-primary/30 bg-primary/[0.03] shadow-sm shadow-primary/5 scale-[1.02]"
-                      : "border-black/5 bg-white hover:border-black/15 hover:bg-gray-50 opacity-60 hover:opacity-100"
+                      ? "border-primary/25 bg-primary/5 shadow-sm scale-[1.02]"
+                      : "border-black/[0.05] bg-black/[0.02] hover:border-black/[0.08] hover:bg-black/[0.02] opacity-50 hover:opacity-100"
                     }`}
                 >
                   {/* Thumbnail */}
@@ -279,7 +282,7 @@ export default function ProjectsShowcase() {
                     <span className={`font-label-sm text-[10px] uppercase font-bold tracking-widest ${isActive ? "text-primary" : "text-on-surface-variant"}`}>
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <h4 className="font-headline-lg-mobile text-xs md:text-sm font-semibold text-on-surface truncate">
+                    <h4 className="font-headline-lg-mobile text-xs md:text-sm font-semibold text-on-background truncate">
                       {project.title}
                     </h4>
                     <span className="font-label-sm text-[9px] uppercase text-on-surface-variant tracking-wider truncate">

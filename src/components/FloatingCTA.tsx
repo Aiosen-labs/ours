@@ -127,13 +127,13 @@ export default function FloatingCTA() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: prefersReducedMotion ? 0 : 0.4 }}
-                  className="bg-white px-5 py-3 rounded-xl shadow-2xl border border-black/5 origin-bottom-right"
+                  className="bg-[#ECEEF4] border border-black/[0.08] px-5 py-3 rounded-xl shadow-2xl origin-bottom-right backdrop-blur-xl"
                 >
-                  <p className="font-label-sm text-xs font-bold text-on-surface uppercase tracking-widest leading-relaxed">
+                  <p className="font-label-sm text-xs font-bold text-[#0D0F14] uppercase tracking-widest leading-relaxed">
                     Got a vision? <br/>
-                    <span className="text-primary mt-1 inline-block">Talk to our architects ✦</span>
+                    <span className="text-[#3385FF] mt-1 inline-block">Talk to our architects ✦</span>
                   </p>
-                  <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-b border-r border-black/5 rotate-45"></div>
+                  <div className="absolute -bottom-2 right-6 w-4 h-4 bg-[#ECEEF4] border-b border-r border-black/[0.08] rotate-45"></div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -150,8 +150,8 @@ export default function FloatingCTA() {
                 }
               }}
               aria-label="Start a conversation"
-              className={`group flex items-center justify-end bg-dark-surface text-white hover:bg-primary transition-all duration-300 ease-in-out overflow-hidden rounded-full border-2 border-white focus:outline-none focus:ring-4 focus:ring-primary/20
-                ${isScrolling ? 'shadow-md' : 'shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.16)]'}
+              className={`group flex items-center justify-end bg-[#0066FF] text-[#0D0F14] hover:bg-[#0066FF] transition-all duration-300 ease-in-out overflow-hidden rounded-full border-2 border-[#0066FF]/30 focus:outline-none focus:ring-4 focus:ring-[#0066FF]/20
+                ${isScrolling ? 'shadow-md' : 'shadow-[0_8px_30px_rgba(0,102,255,0.35)] hover:shadow-[0_12px_40px_rgba(0,102,255,0.5)]'}
               `}
               style={{
                 width: isExpanded ? "auto" : "64px",

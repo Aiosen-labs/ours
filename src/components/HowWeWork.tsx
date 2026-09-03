@@ -41,7 +41,7 @@ export default function HowWeWork() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-white py-20 md:py-32 border-t border-black/5 overflow-hidden">
+    <section className="bg-background py-20 md:py-32 border-t border-black/[0.05] overflow-hidden">
       <motion.div 
         initial="hidden"
         whileInView="visible"
@@ -64,12 +64,12 @@ export default function HowWeWork() {
             <span className="font-label-sm text-xs uppercase tracking-widest text-primary font-bold block mb-4">
               HOW WE WORK
             </span>
-            <h2 className="font-headline-lg text-[30px] md:text-[48px] text-on-surface leading-[1.1] tracking-tight">
+            <h2 className="font-headline-lg text-[30px] md:text-[48px] text-on-background leading-[1.1] tracking-tight">
               Engineering <br />
               <span className="text-on-surface-variant italic font-light">principles in practice.</span>
             </h2>
           </div>
-          <p className="font-body-md text-on-surface-variant text-base md:text-xl font-light leading-relaxed max-w-lg">
+          <p className="font-body-md text-on-surface-variant text-base md:text-xl font-light leading-relaxed max-w-lg text-justify">
             From the first problem to long-term improvement, we stay focused on building technology that works in the real world.
           </p>
         </motion.div>
@@ -77,7 +77,7 @@ export default function HowWeWork() {
         {/* Timeline */}
         <div className="relative">
           {/* Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute top-[28px] left-0 w-full h-[1px] bg-black/10 z-0"></div>
+          <div className="hidden md:block absolute top-[28px] left-0 w-full h-[1px] bg-black/[0.05] z-0"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 relative z-10">
             {processData.map((stage, index) => {
@@ -97,17 +97,17 @@ export default function HowWeWork() {
                 >
                   {/* Mobile Connecting Line */}
                   {index < processData.length - 1 && (
-                    <div className="block md:hidden absolute left-[28px] top-[56px] bottom-[-48px] w-[1px] bg-black/10 z-0"></div>
+                    <div className="block md:hidden absolute left-[28px] top-[56px] bottom-[-48px] w-[1px] bg-black/[0.05] z-0"></div>
                   )}
 
                   <div className="flex items-center gap-6 md:block md:space-y-8 relative z-10">
                     
                     {/* Node */}
                     <div className="relative shrink-0">
-                      <div className={`w-14 h-14 rounded-full bg-white border border-black/10 flex items-center justify-center transition-all duration-500
-                        ${isHovered ? 'border-primary ring-4 ring-primary/10' : ''}
+                      <div className={`w-14 h-14 rounded-full bg-surface border transition-all duration-500
+                        ${isHovered ? 'border-primary ring-4 ring-primary/15 shadow-sm' : 'border-outline-strong'}
                       `}>
-                        <span className={`font-label-sm text-sm uppercase tracking-widest font-bold transition-colors duration-500 ${isHovered ? 'text-primary' : 'text-on-surface-variant'}`}>
+                        <span className={`font-label-sm text-sm uppercase tracking-widest font-bold transition-colors duration-500 flex items-center justify-center h-full ${isHovered ? 'text-primary' : 'text-on-surface-variant'}`}>
                           {stage.number}
                         </span>
                       </div>
@@ -123,11 +123,11 @@ export default function HowWeWork() {
                     {/* Content */}
                     <div>
                       <h3 className={`font-headline-lg-mobile text-xl font-semibold transition-colors duration-500 mb-3
-                        ${isHovered ? 'text-on-surface' : 'text-on-surface-variant'}
+                        ${isHovered ? 'text-on-background' : 'text-on-surface-variant'}
                       `}>
                         {stage.title}
                       </h3>
-                      <p className="font-body-md text-on-surface-variant text-base font-light leading-relaxed max-w-[260px]">
+                      <p className="font-body-md text-on-surface-variant/80 text-base font-light leading-relaxed max-w-[260px] text-justify">
                         {stage.description}
                       </p>
                     </div>

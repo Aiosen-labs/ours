@@ -18,7 +18,7 @@ export default function Testimonials() {
   const hasTestimonials = testimonialsData && testimonialsData.length > 0;
 
   return (
-    <section className="bg-white py-20 md:py-32 border-t border-black/5 overflow-hidden">
+    <section className="bg-surface py-20 md:py-32 border-t border-black/5 overflow-hidden">
       <motion.div 
         initial="hidden"
         whileInView="visible"
@@ -60,7 +60,7 @@ export default function Testimonials() {
                   className="flex flex-col"
                 >
                   <span className="material-symbols-outlined text-[32px] text-primary/30 mb-6">format_quote</span>
-                  <p className="font-body-md text-on-surface text-xl md:text-2xl font-light leading-relaxed mb-8 flex-grow">
+                  <p className="font-body-md text-on-surface text-xl md:text-2xl font-light leading-relaxed mb-8 flex-grow text-justify">
                     &quot;{testimonial.quote}&quot;
                   </p>
                   <div className="pt-8 border-t border-black/5">
@@ -89,7 +89,7 @@ export default function Testimonials() {
               }}
               className="md:col-span-8 lg:col-span-9 flex items-center"
             >
-              <p className="font-body-md text-on-surface-variant text-xl md:text-2xl font-light leading-relaxed max-w-2xl">
+              <p className="font-body-md text-on-surface-variant text-xl md:text-2xl font-light leading-relaxed max-w-2xl text-justify">
                 Client perspectives will appear here as we build long-term partnerships.
               </p>
             </motion.div>
