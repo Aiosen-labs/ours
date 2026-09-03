@@ -150,7 +150,7 @@ export default function FloatingCTA() {
                 }
               }}
               aria-label="Start a conversation"
-              className={`group flex items-center justify-end bg-[#0066FF] text-[#0D0F14] hover:bg-[#0066FF] transition-all duration-300 ease-in-out overflow-hidden rounded-full border-2 border-[#0066FF]/30 focus:outline-none focus:ring-4 focus:ring-[#0066FF]/20
+              className={`group flex items-center justify-end bg-[#0066FF] text-white hover:bg-[#0066FF] transition-all duration-300 ease-in-out overflow-hidden rounded-full border-2 border-[#0066FF]/30 focus:outline-none focus:ring-4 focus:ring-[#0066FF]/20
                 ${isScrolling ? 'shadow-md' : 'shadow-[0_8px_30px_rgba(0,102,255,0.35)] hover:shadow-[0_12px_40px_rgba(0,102,255,0.5)]'}
               `}
               style={{

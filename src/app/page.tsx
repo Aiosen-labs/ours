@@ -18,11 +18,11 @@ export default function Home() {
       <Navbar />
 
       {/* Main Content Canvas */}
-      <main className="flex-grow pt-28 pb-0">
+      <main className="flex-grow pt-20 pb-0">
         {/* Hero Section */}
         <FadeIn delay={100}>
           <div id="home" data-section="hero">
-            <section className="relative w-full min-h-[calc(100svh-112px)] flex items-center justify-center pb-20 border-b border-black/[0.05] bg-background overflow-hidden perspective-1000">
+            <section className="relative w-full min-h-[calc(100svh-80px)] flex items-center justify-center pb-20 border-b border-black/[0.05] bg-background overflow-hidden perspective-1000">
               {/* Grid pattern */}
               <div className="absolute inset-0 hero-grid pointer-events-none" />
               {/* Soft blue ambient for antigravity feel */}
