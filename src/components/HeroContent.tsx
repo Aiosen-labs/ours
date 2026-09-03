@@ -26,6 +26,7 @@ export default function HeroContent() {
 
       {/* Headline — bold, white, no gradient nonsense */}
       <TextReveal
+        as="h1"
         baseDelay={0.9}
         className="font-display-lg-mobile text-[40px] sm:text-5xl md:font-display-lg md:text-[88px] text-on-background tracking-[-0.04em] leading-[1.05] flex flex-col items-center w-full"
         lines={[

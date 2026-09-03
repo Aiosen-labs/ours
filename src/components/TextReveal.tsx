@@ -19,13 +19,15 @@ export default function TextReveal({
   lines,
   className = "",
   baseDelay = 0.1,
+  as: Component = "div",
 }: {
   lines: React.ReactNode[];
   className?: string;
   baseDelay?: number;
+  as?: React.ElementType;
 }) {
   return (
-    <div className={className}>
+    <Component className={className}>
       {lines.map((line, i) => (
         <motion.div
           key={i}
@@ -38,6 +40,6 @@ export default function TextReveal({
           {line}
         </motion.div>
       ))}
-    </div>
+    </Component>
   );
 }
