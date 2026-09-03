@@ -21,7 +21,7 @@ export default function Home() {
       <main className="flex-grow pt-20 pb-0">
         {/* Hero Section */}
         <FadeIn delay={100}>
-          <div id="home" data-section="hero">
+          <div id="home" data-section="hero" role="region" aria-label="Hero">
             <section className="relative w-full min-h-[calc(100svh-80px)] flex items-center justify-center pb-20 border-b border-black/[0.05] bg-background overflow-hidden perspective-1000">
               {/* Grid pattern */}
               <div className="absolute inset-0 hero-grid pointer-events-none" />
@@ -37,21 +37,21 @@ export default function Home() {
 
         {/* Section 2: Projects */}
         <FadeIn delay={100}>
-          <div id="projects" data-section="projects">
+          <div id="projects" data-section="projects" role="region" aria-label="Case Studies">
             <ProjectsShowcase />
           </div>
         </FadeIn>
         
         {/* Section 3: Services / Capability Map */}
         <FadeIn delay={100}>
-          <div id="services" data-section="services">
+          <div id="services" data-section="services" role="region" aria-label="Services">
             <ServicesShowcase />
           </div>
         </FadeIn>
 
         {/* Section 4: How We Work */}
         <FadeIn delay={100}>
-          <div id="process" data-section="how-we-work">
+          <div id="process" data-section="how-we-work" role="region" aria-label="How We Work">
             <HowWeWork />
           </div>
         </FadeIn>
@@ -60,7 +60,7 @@ export default function Home() {
 
         {/* Section 6: Contact */}
         <FadeIn delay={100}>
-          <div id="contact" data-section="contact">
+          <div id="contact" data-section="contact" role="region" aria-label="Contact">
             <ContactSection />
           </div>
         </FadeIn>

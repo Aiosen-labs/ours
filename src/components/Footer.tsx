@@ -46,18 +46,18 @@ export default function Footer() {
             © 2026 Aiosenlabs. All rights reserved.
           </p>
         </div>
-        <div className="col-span-1 md:col-span-3 flex flex-col items-start gap-6 font-label-sm text-xs uppercase tracking-widest font-semibold">
+        <nav aria-label="Legal" className="col-span-1 md:col-span-3 flex flex-col items-start gap-6 font-label-sm text-xs uppercase tracking-widest font-semibold">
           <button onClick={(e) => handleScroll(e, "services")} className="text-on-surface-variant hover:text-primary transition-colors duration-300 text-left">Privacy Policy</button>
           <button onClick={(e) => handleScroll(e, "services")} className="text-on-surface-variant hover:text-primary transition-colors duration-300 text-left">Terms of Service</button>
           <button onClick={(e) => handleScroll(e, "services")} className="text-on-surface-variant hover:text-primary transition-colors duration-300 text-left">Security</button>
           <button onClick={(e) => handleScroll(e, "services")} className="text-on-surface-variant hover:text-primary transition-colors duration-300 text-left">Compliance</button>
-        </div>
-        <div className="col-span-1 md:col-span-3 flex flex-col items-start gap-6 font-label-sm text-xs uppercase tracking-widest font-semibold">
+        </nav>
+        <nav aria-label="Company" className="col-span-1 md:col-span-3 flex flex-col items-start gap-6 font-label-sm text-xs uppercase tracking-widest font-semibold">
           <button onClick={(e) => handleScroll(e, "process")} className="text-on-surface-variant hover:text-primary transition-colors duration-300 text-left">Careers</button>
           <button onClick={(e) => handleScroll(e, "projects")} className="text-on-surface-variant hover:text-primary transition-colors duration-300 text-left">Engineering Blog</button>
           <button onClick={(e) => handleScroll(e, "projects")} className="text-on-surface-variant hover:text-primary transition-colors duration-300 text-left">Open Source</button>
           <button onClick={(e) => handleScroll(e, "contact")} className="text-primary hover:text-on-background transition-colors duration-300 text-left">Contact Us</button>
-        </div>
+        </nav>
       </div>
     </footer>
   );
