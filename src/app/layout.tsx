@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import FloatingCTA from "@/components/FloatingCTA";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aiosenlabs.vercel.app'),
@@ -104,7 +105,7 @@ export default function RootLayout({
     ],
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+91-72006-70847",
+      "telephone": "+91-82485-92553",
       "contactType": "customer service",
       "email": "aiosenlabs@gmail.com",
       "availableLanguage": "English"
@@ -128,7 +129,7 @@ export default function RootLayout({
     "@type": "ProfessionalService",
     "name": "Aiosenlabs",
     "url": "https://aiosenlabs.vercel.app",
-    "telephone": "+91-72006-70847",
+    "telephone": "+91-82485-92553",
     "email": "aiosenlabs@gmail.com",
     "description": "End-to-end custom software development, e-commerce, AI integration, cloud infrastructure, and annual maintenance for businesses worldwide.",
     "areaServed": "Worldwide",
@@ -174,6 +175,18 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col font-body-md text-body-md">
         {children}
         <FloatingCTA />
+        
+        {/* Google Analytics */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-CRZKHE6FLM" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-CRZKHE6FLM');
+          `}
+        </Script>
       </body>
     </html>
   );
