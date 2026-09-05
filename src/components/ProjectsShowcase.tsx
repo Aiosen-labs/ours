@@ -108,7 +108,7 @@ export default function ProjectsShowcase() {
             {/* Project Visual */}
             <div className="lg:col-span-7 relative group perspective-1000">
               <div 
-                className="relative aspect-[16/9] md:aspect-[4/3] w-full rounded-2xl overflow-hidden glass-panel transition-transform duration-700 ease-out hover:rotate-x-1 hover:-translate-y-1"
+                className="relative aspect-[16/9] md:aspect-[4/3] w-full rounded-2xl overflow-hidden glass-panel transition-transform duration-700 ease-out hover:rotate-x-1 hover:-translate-y-1 bg-white"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <div className="absolute inset-0 bg-black/5 z-10 mix-blend-overlay" />
@@ -121,7 +121,7 @@ export default function ProjectsShowcase() {
                     transition={{ duration: 0.3 }}
                     src={images[currentImageIndex] || FALLBACK_IMAGE}
                     alt={activeProject.title}
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+                    className="w-full h-full object-contain transition-transform duration-1000"
                     onError={(e) => { (e.target as HTMLImageElement).src = FALLBACK_IMAGE; }}
                   />
                 </AnimatePresence>
@@ -185,7 +185,7 @@ export default function ProjectsShowcase() {
                 {activeProject.description}
               </p>
 
-              <div className="pt-2 md:pt-4">
+              <div className="pt-2 md:pt-4 flex flex-wrap items-center gap-4">
                 <button 
                   onClick={() => setIsModalOpen(true)}
                   className="group inline-flex items-center gap-3 bg-transparent border-none p-0 cursor-pointer"
@@ -197,6 +197,17 @@ export default function ProjectsShowcase() {
                     View Case Study
                   </span>
                 </button>
+                {activeProject.liveUrl && (
+                  <a
+                    href={activeProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 px-4 py-2 rounded-full border border-outline-strong text-on-surface-variant hover:border-primary hover:text-primary transition-all duration-300 font-label-sm text-[10px] uppercase tracking-widest font-bold"
+                  >
+                    <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+                    Live Site
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>
@@ -268,11 +279,11 @@ export default function ProjectsShowcase() {
                     }`}
                 >
                   {/* Thumbnail */}
-                  <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-lg overflow-hidden bg-gray-100 border border-black/5 relative">
+                  <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 rounded-lg overflow-hidden bg-white border border-black/5 relative">
                     <img
                       src={project.imageUrl || FALLBACK_IMAGE}
                       alt={project.title}
-                      className={`w-full h-full object-cover transition-transform duration-500 ${isActive ? "scale-105" : "scale-100"}`}
+                      className="w-full h-full object-contain"
                       onError={(e) => { (e.target as HTMLImageElement).src = FALLBACK_IMAGE; }}
                     />
                   </div>

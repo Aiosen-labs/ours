@@ -125,9 +125,29 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
               <span className="hidden sm:block font-label-sm text-xs font-bold uppercase tracking-widest text-primary">
                 Case Study
               </span>
+              <div className="hidden sm:flex items-center gap-3">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 text-primary hover:bg-primary hover:text-white transition-all duration-200 font-label-sm text-[10px] uppercase tracking-widest font-bold"
+                  >
+                    <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+                    Visit Live Site
+                  </a>
+                )}
+                <button
+                  onClick={onClose}
+                  className="w-10 h-10 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                  aria-label="Close modal"
+                >
+                  <span className="material-symbols-outlined text-[20px] text-on-surface">close</span>
+                </button>
+              </div>
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 sm:static w-10 h-10 rounded-full bg-white/60 sm:bg-black/5 backdrop-blur-md sm:backdrop-blur-none hover:bg-black/10 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-primary z-50"
+                className="absolute top-4 right-4 sm:hidden w-10 h-10 rounded-full bg-white/60 backdrop-blur-md hover:bg-black/10 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-primary z-50"
                 aria-label="Close modal"
               >
                 <span className="material-symbols-outlined text-[20px] text-on-surface">close</span>
@@ -159,7 +179,7 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
               </p>
 
               {/* Image Carousel */}
-              <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-gray-100 border border-black/5 mb-12 group">
+              <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-white border border-black/5 mb-12 group">
                 <AnimatePresence initial={false} mode="wait">
                   <motion.img
                     key={currentImageIndex}
@@ -169,7 +189,7 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
                     transition={{ duration: 0.3 }}
                     src={images[currentImageIndex]}
                     alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </AnimatePresence>
 
@@ -249,9 +269,20 @@ export default function CaseStudyModal({ isOpen, onClose, project }: CaseStudyMo
                       <h3 className="font-label-sm text-xs font-bold uppercase tracking-widest text-on-surface mb-3">Outcome</h3>
                       <div className="p-5 rounded-2xl bg-primary/[0.03] border border-primary/10">
                         <p className="font-body-md text-on-surface text-sm sm:text-base leading-relaxed italic">
-                          "{project.outcome}"
+                          &ldquo;{project.outcome}&rdquo;
                         </p>
                       </div>
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white hover:bg-primary/90 transition-all duration-200 font-label-sm text-[10px] uppercase tracking-widest font-bold shadow-sm"
+                        >
+                          <span className="material-symbols-outlined text-[14px]">open_in_new</span>
+                          Visit Live Site
+                        </a>
+                      )}
                     </div>
                   )}
                 </div>
